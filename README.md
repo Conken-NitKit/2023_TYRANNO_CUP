@@ -23,7 +23,7 @@ Assets
 │   ├── Photon
 │   └── UniRx
 └── MyAssets
-    ├── Commmons
+    ├── Commmon
     │   ├── Animations
     │   ├── アニメーション入れるとこ
     │   ├── Fonts
@@ -43,8 +43,9 @@ Assets
     │   └── 同階層の他のフォルダの中身も大体こんな感じです
     ├── Develops
     │   └── 個人の開発シーンの置き場
-    ├── Field
-    ├── Result
+    ├── Normal
+    ├── Ranking
+    ├── TimeAttack
     └── Title
 
 ```
