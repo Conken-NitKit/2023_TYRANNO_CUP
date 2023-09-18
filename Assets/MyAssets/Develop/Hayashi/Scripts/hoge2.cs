@@ -7,12 +7,11 @@ public class hoge2 : MonoBehaviour
 {
     [SerializeField] 
     private hoge Hoge;
-
-    [SerializeField]
-    private int i, j;
+    
+    public int ind, jnd;
 
     public void Clicked()
     {
-        Hoge.SetValue(i, j);
+        //Hoge.SetValue(i, j);
     }
 }

@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UniRx;
 using UnityEngine.UI;
@@ -12,8 +8,14 @@ public class hoge : MonoBehaviour
 
     private BoolReactiveProperty[,] hoges = new BoolReactiveProperty[SquareSize,SquareSize];
 
+    [SerializeField] 
+    private ChildButtonArray[] buttons;
+
+    [SerializeField] 
+    private ChildHoge2Array[] _hoge2Arrays;
+
     [SerializeField]
-    private ChildArray[] Arrays;
+    private ChildImageArray[] Arrays;
 
     void Start()
     {
@@ -39,6 +41,34 @@ public class hoge : MonoBehaviour
                 }).AddTo(gameObject);
             }
         } 
+        
+        for (int i = 0; i < SquareSize; i++)
+        {
+            for (int j = 0; j < SquareSize; j++)
+            {
+                var a = i;
+                var b = j;
+
+                buttons[i].childArray[j].onClick.AsObservable().Subscribe(_ =>
+                {
+                    SetValue(_hoge2Arrays[a].childArray[b].ind, _hoge2Arrays[a].childArray[b].jnd);
+                }).AddTo(gameObject);
+                
+                hoges[i,j].Subscribe(x =>
+                {
+                    if (x)
+                    {
+                        Arrays[a].childArray[b].color = Color.black;
+                    }
+                    else
+                    {
+                        Arrays[a].childArray[b].color = Color.white;
+                    }
+                }).AddTo(gameObject);
+            }
+        } 
+        
+        
     }
 
     public void hage()
@@ -76,7 +106,19 @@ public class hoge : MonoBehaviour
 
 
 [System.Serializable]
-public class ChildArray
+public class ChildImageArray
 {
     public Image[] childArray;
+}
+
+[System.Serializable]
+public class ChildHoge2Array
+{
+    public hoge2[] childArray;
+}
+
+[System.Serializable]
+public class ChildButtonArray
+{
+    public Button[] childArray;
 }
