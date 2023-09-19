@@ -26,7 +26,6 @@ namespace Tyranno.Puzzle
             Thread.Sleep(3000);
 
             Initialize();
-            Debug.Log("Initialize");
         }
 
         private void Initialize()
@@ -38,8 +37,6 @@ namespace Tyranno.Puzzle
                     var a = i;
                     var b = j;
                     
-                    Debug.Log($"{_puzzleState.MatrixColorFilledStates[a,b]}");
-
                     _buttonArray[i].ButtonArray[j].onClick.AsObservable().Subscribe(_ =>
                     {
                         _puzzleState.SetValue(_squareInfoArray[a].SquareInfoArray[b].Row, _squareInfoArray[a].SquareInfoArray[b].Column);
