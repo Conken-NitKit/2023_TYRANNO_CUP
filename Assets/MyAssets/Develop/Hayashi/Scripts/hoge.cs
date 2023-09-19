@@ -6,7 +6,9 @@ public class hoge : MonoBehaviour
 {
     private const int SquareSize = 3;
 
-    private BoolReactiveProperty[,] hoges = new BoolReactiveProperty[SquareSize,SquareSize];
+    public BoolReactiveProperty[,] hoges = new BoolReactiveProperty[SquareSize,SquareSize];
+
+    public bool[,] SquareArray = new bool[SquareSize, SquareSize];
 
     [SerializeField] 
     private ChildButtonArray[] buttons;
@@ -20,16 +22,19 @@ public class hoge : MonoBehaviour
     void Start()
     {
         SetAllElementsReactiveProperty(false);
-        
-        
+
+        ToArray();
+
         for (int i = 0; i < SquareSize; i++)
         {
             for (int j = 0; j < SquareSize; j++)
             {
                 var a = i;
                 var b = j;
+
                 hoges[i,j].Subscribe(x =>
                 {
+                    SquareArray[a, b] = x;
                     if (x)
                     {
                         Arrays[a].childArray[b].color = Color.black;
@@ -66,16 +71,23 @@ public class hoge : MonoBehaviour
                     }
                 }).AddTo(gameObject);
             }
-        } 
-        
-        
+        }
     }
 
-    public void hage()
+    private void ToArray()
     {
-        SetAllElements(true);
+        for (int i = 0; i < SquareSize; i++)
+        {
+            for (int j = 0; j < SquareSize; j++)
+            {
+                var a = i;
+                var b = j;
+
+                SquareArray[a, b] = hoges[a, b].Value;
+            }
+        } 
     }
-    
+
     private void SetAllElementsReactiveProperty(bool x)
     {
         for (int i = 0; i < SquareSize; i++)
