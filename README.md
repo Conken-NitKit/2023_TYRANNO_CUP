@@ -54,6 +54,8 @@ DownLoadAssetsの中には開発には使用するけど、入れてるだけで
 必要になったらPrefab、ScriptをコピーしてMyAssetに移動させて使用すること。
 
 ### クラス図
+![Pazzles](https://github.com/Conken-NitKit/2023_TYRANNO_CUP/assets/83874472/97e6f624-d478-4de0-92cd-406807b6667a)
+
 
 ### コーディングルール
 - 命名規則
