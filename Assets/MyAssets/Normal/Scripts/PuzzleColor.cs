@@ -31,11 +31,11 @@ namespace Tyranno.Puzzle
                         _puzzleState.SquareArray[a, b] = x;
                         if (x)
                         {
-                            _imageArray[a].childImageArray[b].color = Color.black;
+                            _imageArray[a].childImageArray[b].color = _paintColor;
                         }
                         else
                         {
-                            _imageArray[a].childImageArray[b].color = Color.white;
+                            _imageArray[a].childImageArray[b].color = _paintColor;
                         }
                     }).AddTo(gameObject);
                 }
