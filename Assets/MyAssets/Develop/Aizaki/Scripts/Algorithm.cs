@@ -244,8 +244,17 @@ namespace Tyranno
                 //    return false;
                 //};
                 */
-                static readonly Func<bool[,], bool> LeftToRightMaze = states =>
+                public static readonly Func<bool[,], bool> LeftToRightMaze = states2 =>
                 {
+                    bool[,] states = new bool[states2.GetLength(1),states2.GetLength(0)];
+                    for (int i = 0; i < states2.GetLength(0); i++)
+                    {
+                        for (int j = 0; j < states2.GetLength(1); j++)
+                        {
+                            states[i, j] = states2[j, i];
+                        }
+                    }
+
                     List<(bool, (int x, int y))> Around(bool[,] states, int x, int y)
                     {
                         List<(bool, (int x, int y))> values = new();
@@ -287,35 +296,35 @@ namespace Tyranno
                     int AroundCount(bool[,] states, int x, int y)
                     {
                         int count = 0;
-                        if (x - 1 >= 0 && y - 1 >= 0)
+                        if (x - 1 >= 0 && y - 1 >= 0 && states[x - 1, y - 1])
                         {
                             count++;
                         }
-                        if (x + 1 < states.GetLength(0) && y - 1 >= 0)
+                        if (x + 1 < states.GetLength(0) && y - 1 >= 0 && states[x + 1, y - 1])
                         {
                             count++;
                         }
-                        if (x - 1 >= 0 && y + 1 < states.GetLength(1))
+                        if (x - 1 >= 0 && y + 1 < states.GetLength(1) && states[x - 1, y + 1])
                         {
                             count++;
                         }
-                        if (x + 1 < states.GetLength(0) && y + 1 < states.GetLength(1))
+                        if (x + 1 < states.GetLength(0) && y + 1 < states.GetLength(1) && states[x + 1, y + 1])
                         {
                             count++;
                         }
-                        if (x - 1 >= 0)
+                        if (x - 1 >= 0 && states[x - 1, y])
                         {
                             count++;
                         }
-                        if (x + 1 < states.GetLength(0))
+                        if (x + 1 < states.GetLength(0) && states[x + 1,y])
                         {
                             count++;
                         }
-                        if (y - 1 >= 0)
+                        if (y - 1 >= 0 && states[x, y - 1])
                         {
                             count++;
                         }
-                        if (y + 1 < states.GetLength(1))
+                        if (y + 1 < states.GetLength(1) && states[x, y + 1])
                         {
                             count++;
                         }
@@ -326,11 +335,13 @@ namespace Tyranno
                     {
                         var around = Around(states, x, y);
                         if (count + 1 > around.Count || count < 0) throw new ArgumentException("存在するブランチの数に対応しないインデックスを指定しています");
+                        around.RemoveAll(x => !x.Item1);
                         return around[count].Item2;
                     }
 
                     for (int i = 0; i < states.GetLength(1); i++)
                     {
+                        
                         if (!states[0, i])
                         {
                             continue;
@@ -346,11 +357,11 @@ namespace Tyranno
                             {
                                 return true;
                             }
-                            var around = Around(statesClone, currentLocation.x, currentLocation.y);
+
                             var aroundCount = AroundCount(statesClone, currentLocation.x, currentLocation.y);
                             if (aroundCount == 0)
                             {
-                                if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) Out)
+                                if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) Out))
                                 {
                                     currentLocation = Out.location;
                                     statesClone = Out.statesLog;
@@ -368,15 +379,23 @@ namespace Tyranno
                             else if (aroundCount == 1)
                             {
                                 statesClone[currentLocation.x, currentLocation.y] = false;
-                                currentLocation = around[0].Item2;
+                                currentLocation = GetBranchByCount(statesClone, currentLocation.x, currentLocation.y, 0);
                             }
                             else if (aroundCount >= 2)
                             {
                                 statesClone[currentLocation.x, currentLocation.y] = false;
-                                var countTmp = branchStacks.Peek().location == currentLocation ? branchStacks.Peek().count + 1 : 0;
-                                branchStacks.Push((currentLocation, countTmp, statesClone));
-                                var branchloc = GetBranchByCount(statesClone, currentLocation.x, currentLocation.y, countTmp);
-                                currentLocation = around[countTmp].Item2;
+                                if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) Out))
+                                {
+                                    var countTmp = Out.location == currentLocation ? Out.count + 1 : 0;
+                                    branchStacks.Push((currentLocation, countTmp, statesClone));
+                                    var branchloc = GetBranchByCount(statesClone, currentLocation.x, currentLocation.y, countTmp);
+                                    currentLocation = GetBranchByCount(statesClone, currentLocation.x, currentLocation.y, countTmp);
+                                }
+                                else
+                                {
+                                    branchStacks.Push((currentLocation, 0, statesClone));
+                                }
+                                
                             }
                         }
 
