@@ -1,15 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using Tyranno.Common;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
+using Cysharp.Threading.Tasks;
 
 namespace Tyranno.Puzzle
 {
     public class PuzzleColor : MonoBehaviour
     {
-        [SerializeField]
+        /*[SerializeField]
         private PuzzleState _puzzleState;
 
         [SerializeField]
@@ -18,18 +21,29 @@ namespace Tyranno.Puzzle
         [SerializeField]
         private Color _paintColor = Color.black;
 
-        private void Initialize()
+        async Task Start()
         {
+            Thread.Sleep(3000);
+            
+            Debug.Log("Initialized");
+
+            Initialized();
+        }
+
+        private void Initialized()
+        {
+            
             for (int i = 0; i < GlobalConst.SQUARE_SIZE; i++)
             {
                 for (int j = 0; j < GlobalConst.SQUARE_SIZE; j++)
                 {
                     var a = i;
                     var b = j;
+                    
+                    Debug.Log(_puzzleState.MatrixColorFilledStates);
 
-                    _puzzleState.MatrixColorFilledStates[i,j].Subscribe(x =>
+                    _puzzleState.MatrixColorFilledStates[a,b].Subscribe(x =>
                     {
-                        _puzzleState.SquareArray[a, b] = x;
                         if (x)
                         {
                             _imageArray[a].ImageArray[b].color = _paintColor;
@@ -41,17 +55,18 @@ namespace Tyranno.Puzzle
                     }).AddTo(gameObject);
                 }
             } 
+            Debug.Log("色変え終わり");
         }
         
         public void SetPaintColor(Color paintColor)
         {
             _paintColor = paintColor;
-        }
+        }*/
     }
     
-    [System.Serializable]
+    /*[System.Serializable]
     public class ChildImageArray
     {
         public Image[] ImageArray;
-    }
+    }*/
 }

@@ -1,9 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using Tyranno.Common;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
+using Cysharp.Threading.Tasks;
 
 namespace Tyranno.Puzzle
 {
@@ -18,6 +21,14 @@ namespace Tyranno.Puzzle
         [SerializeField] 
         private ChildSquareInfoArray[] _squareInfoArray;
 
+        async Task Start()
+        {
+            Thread.Sleep(3000);
+
+            Initialize();
+            Debug.Log("Initialize");
+        }
+
         private void Initialize()
         {
             for (int i = 0; i < GlobalConst.SQUARE_SIZE; i++)
@@ -26,6 +37,8 @@ namespace Tyranno.Puzzle
                 {
                     var a = i;
                     var b = j;
+                    
+                    Debug.Log($"{_puzzleState.MatrixColorFilledStates[a,b]}");
 
                     _buttonArray[i].ButtonArray[j].onClick.AsObservable().Subscribe(_ =>
                     {

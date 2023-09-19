@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Tyranno.Puzzle;
 using UniRx;
 using UnityEngine;
 
 public class hoge4 : MonoBehaviour
 {
     [SerializeField]
-    private hoge _hoge;
+    private PuzzleState _puzzleState;
 
     private char[,] array = new char[3, 3];
     
@@ -16,7 +17,7 @@ public class hoge4 : MonoBehaviour
         {
             for (int j = 0; j < 3; j++)
             {
-                if (_hoge.SquareArray[i, j])
+                if (_puzzleState.SquareArray[i, j])
                 {
                     array[i,j] = '○';
                 }
