@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 95263927}
   - component: {fileID: 95263932}
   - component: {fileID: 95263928}
-  - component: {fileID: 95263931}
+  - component: {fileID: 95263933}
   m_Layer: 5
   m_Name: 20
   m_TagString: Untagged
@@ -216,20 +216,6 @@ RectTransform:
   m_AnchoredPosition: {x: -100, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &95263931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95263926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e1f54b51f5248908b257ddd2271ece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ind: 2
-  jnd: 0
 --- !u!114 &95263932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,7 +260,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 95263931}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: hoge2, Assembly-CSharp
         m_MethodName: Clicked
         m_Mode: 1
@@ -286,6 +272,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &95263933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95263926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c259df3941c484c628aea57ef807d025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Row: 2
+  Column: 0
 --- !u!1 &181510179
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 181510180}
   - component: {fileID: 181510185}
   - component: {fileID: 181510181}
-  - component: {fileID: 181510184}
+  - component: {fileID: 181510186}
   m_Layer: 5
   m_Name: 22
   m_TagString: Untagged
@@ -379,20 +379,6 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &181510184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181510179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e1f54b51f5248908b257ddd2271ece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ind: 2
-  jnd: 2
 --- !u!114 &181510185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,7 +423,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 181510184}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: hoge2, Assembly-CSharp
         m_MethodName: Clicked
         m_Mode: 1
@@ -449,6 +435,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &181510186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181510179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c259df3941c484c628aea57ef807d025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Row: 2
+  Column: 2
 --- !u!1 &389905360
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 389905361}
   - component: {fileID: 389905366}
   - component: {fileID: 389905362}
-  - component: {fileID: 389905365}
+  - component: {fileID: 389905367}
   m_Layer: 5
   m_Name: 21
   m_TagString: Untagged
@@ -542,20 +542,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &389905365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 389905360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e1f54b51f5248908b257ddd2271ece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ind: 2
-  jnd: 1
 --- !u!114 &389905366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,7 +586,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 389905365}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: hoge2, Assembly-CSharp
         m_MethodName: Clicked
         m_Mode: 1
@@ -612,6 +598,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &389905367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389905360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c259df3941c484c628aea57ef807d025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Row: 2
+  Column: 1
 --- !u!1 &516718416
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 516718421}
   - component: {fileID: 516718420}
   - component: {fileID: 516718419}
-  - component: {fileID: 516718418}
+  - component: {fileID: 516718422}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -652,19 +652,6 @@ RectTransform:
   m_AnchoredPosition: {x: -243, y: 86.5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &516718418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 516718416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ebc6c86d1c2146118673f7e195910af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hoge: {fileID: 2027288379}
 --- !u!114 &516718419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,7 +696,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 516718418}
+      - m_Target: {fileID: 516718422}
         m_TargetAssemblyTypeName: hoge4, Assembly-CSharp
         m_MethodName: Clicked
         m_Mode: 1
@@ -759,6 +746,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516718416}
   m_CullTransparentMesh: 1
+--- !u!114 &516718422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516718416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ebc6c86d1c2146118673f7e195910af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _puzzleState: {fileID: 2027288385}
 --- !u!1 &540691788
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,7 +851,7 @@ GameObject:
   - component: {fileID: 615892948}
   - component: {fileID: 615892953}
   - component: {fileID: 615892949}
-  - component: {fileID: 615892952}
+  - component: {fileID: 615892954}
   m_Layer: 5
   m_Name: 01
   m_TagString: Untagged
@@ -931,20 +931,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &615892952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 615892947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e1f54b51f5248908b257ddd2271ece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ind: 0
-  jnd: 1
 --- !u!114 &615892953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -989,7 +975,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 615892952}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: hoge2, Assembly-CSharp
         m_MethodName: Clicked
         m_Mode: 1
@@ -1001,6 +987,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &615892954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615892947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c259df3941c484c628aea57ef807d025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Row: 0
+  Column: 1
 --- !u!1 &694069076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,7 +1014,7 @@ GameObject:
   - component: {fileID: 694069077}
   - component: {fileID: 694069082}
   - component: {fileID: 694069078}
-  - component: {fileID: 694069081}
+  - component: {fileID: 694069083}
   m_Layer: 5
   m_Name: 10
   m_TagString: Untagged
@@ -1094,20 +1094,6 @@ RectTransform:
   m_AnchoredPosition: {x: -100, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &694069081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 694069076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e1f54b51f5248908b257ddd2271ece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ind: 1
-  jnd: 0
 --- !u!114 &694069082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1152,7 +1138,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 694069081}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: hoge2, Assembly-CSharp
         m_MethodName: Clicked
         m_Mode: 1
@@ -1164,6 +1150,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &694069083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694069076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c259df3941c484c628aea57ef807d025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Row: 1
+  Column: 0
 --- !u!1 &1082119909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,7 +1177,7 @@ GameObject:
   - component: {fileID: 1082119910}
   - component: {fileID: 1082119915}
   - component: {fileID: 1082119911}
-  - component: {fileID: 1082119914}
+  - component: {fileID: 1082119916}
   m_Layer: 5
   m_Name: 02
   m_TagString: Untagged
@@ -1257,20 +1257,6 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: 100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1082119914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1082119909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e1f54b51f5248908b257ddd2271ece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ind: 0
-  jnd: 2
 --- !u!114 &1082119915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1315,7 +1301,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1082119914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: hoge2, Assembly-CSharp
         m_MethodName: Clicked
         m_Mode: 1
@@ -1327,6 +1313,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1082119916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082119909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c259df3941c484c628aea57ef807d025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Row: 0
+  Column: 2
 --- !u!1 &1152253094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,7 +1432,7 @@ GameObject:
   - component: {fileID: 1385617183}
   - component: {fileID: 1385617188}
   - component: {fileID: 1385617184}
-  - component: {fileID: 1385617187}
+  - component: {fileID: 1385617189}
   m_Layer: 5
   m_Name: 12
   m_TagString: Untagged
@@ -1512,20 +1512,6 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1385617187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1385617182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e1f54b51f5248908b257ddd2271ece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ind: 1
-  jnd: 2
 --- !u!114 &1385617188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1570,7 +1556,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1385617187}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: hoge2, Assembly-CSharp
         m_MethodName: Clicked
         m_Mode: 1
@@ -1582,6 +1568,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1385617189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385617182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c259df3941c484c628aea57ef807d025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Row: 1
+  Column: 2
 --- !u!1 &1430369751
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,7 +1595,7 @@ GameObject:
   - component: {fileID: 1430369752}
   - component: {fileID: 1430369757}
   - component: {fileID: 1430369753}
-  - component: {fileID: 1430369756}
+  - component: {fileID: 1430369758}
   m_Layer: 5
   m_Name: 11
   m_TagString: Untagged
@@ -1675,20 +1675,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1430369756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1430369751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e1f54b51f5248908b257ddd2271ece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ind: 1
-  jnd: 1
 --- !u!114 &1430369757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1733,7 +1719,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1430369756}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: hoge2, Assembly-CSharp
         m_MethodName: Clicked
         m_Mode: 1
@@ -1745,6 +1731,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1430369758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430369751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c259df3941c484c628aea57ef807d025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Row: 1
+  Column: 1
 --- !u!1 &2017286118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1825,7 +1825,9 @@ GameObject:
   - component: {fileID: 2027288382}
   - component: {fileID: 2027288381}
   - component: {fileID: 2027288380}
-  - component: {fileID: 2027288379}
+  - component: {fileID: 2027288385}
+  - component: {fileID: 2027288386}
+  - component: {fileID: 2027288387}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1833,57 +1835,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2027288379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2027288378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f2b8c24070f3483190314124a9f5181, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttons:
-  - childArray:
-    - {fileID: 2080514469}
-    - {fileID: 615892953}
-    - {fileID: 1082119915}
-  - childArray:
-    - {fileID: 694069082}
-    - {fileID: 1430369757}
-    - {fileID: 1385617188}
-  - childArray:
-    - {fileID: 95263932}
-    - {fileID: 389905366}
-    - {fileID: 181510185}
-  _hoge2Arrays:
-  - childArray:
-    - {fileID: 2080514468}
-    - {fileID: 615892952}
-    - {fileID: 1082119914}
-  - childArray:
-    - {fileID: 694069081}
-    - {fileID: 1430369756}
-    - {fileID: 1385617187}
-  - childArray:
-    - {fileID: 95263931}
-    - {fileID: 389905365}
-    - {fileID: 181510184}
-  Arrays:
-  - childArray:
-    - {fileID: 2080514464}
-    - {fileID: 615892948}
-    - {fileID: 1082119910}
-  - childArray:
-    - {fileID: 694069077}
-    - {fileID: 1430369752}
-    - {fileID: 1385617183}
-  - childArray:
-    - {fileID: 95263927}
-    - {fileID: 389905361}
-    - {fileID: 181510180}
 --- !u!114 &2027288380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1934,7 +1885,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1152253096}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1976,6 +1927,83 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2027288385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027288378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841419f5bc8bc4971907ee4af1e28021, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _imageArray:
+  - ImageArray:
+    - {fileID: 2080514464}
+    - {fileID: 615892948}
+    - {fileID: 1082119910}
+  - ImageArray:
+    - {fileID: 694069077}
+    - {fileID: 1430369752}
+    - {fileID: 1385617183}
+  - ImageArray:
+    - {fileID: 95263927}
+    - {fileID: 389905361}
+    - {fileID: 181510180}
+  _paintColor: {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &2027288386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027288378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 297ae5f599e734461a754731c7102d26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _puzzleState: {fileID: 2027288385}
+  _buttonArray:
+  - ButtonArray:
+    - {fileID: 2080514469}
+    - {fileID: 615892953}
+    - {fileID: 1082119915}
+  - ButtonArray:
+    - {fileID: 694069082}
+    - {fileID: 1430369757}
+    - {fileID: 1385617188}
+  - ButtonArray:
+    - {fileID: 95263932}
+    - {fileID: 389905366}
+    - {fileID: 181510185}
+  _squareInfoArray:
+  - SquareInfoArray:
+    - {fileID: 2080514470}
+    - {fileID: 615892954}
+    - {fileID: 1082119916}
+  - SquareInfoArray:
+    - {fileID: 694069083}
+    - {fileID: 1430369758}
+    - {fileID: 1385617189}
+  - SquareInfoArray:
+    - {fileID: 95263933}
+    - {fileID: 389905367}
+    - {fileID: 181510186}
+--- !u!114 &2027288387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027288378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0500c7d8deb4e4e55a6672c6f8c14c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2080514463
 GameObject:
   m_ObjectHideFlags: 0
@@ -1989,7 +2017,7 @@ GameObject:
   - component: {fileID: 2080514464}
   - component: {fileID: 2080514469}
   - component: {fileID: 2080514465}
-  - component: {fileID: 2080514468}
+  - component: {fileID: 2080514470}
   m_Layer: 5
   m_Name: 00
   m_TagString: Untagged
@@ -2069,20 +2097,6 @@ RectTransform:
   m_AnchoredPosition: {x: -100, y: 100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2080514468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2080514463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e1f54b51f5248908b257ddd2271ece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ind: 0
-  jnd: 0
 --- !u!114 &2080514469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2127,7 +2141,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2080514468}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: hoge2, Assembly-CSharp
         m_MethodName: Clicked
         m_Mode: 1
@@ -2139,6 +2153,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2080514470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080514463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c259df3941c484c628aea57ef807d025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Row: 0
+  Column: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
