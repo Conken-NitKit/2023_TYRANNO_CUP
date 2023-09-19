@@ -12,6 +12,7 @@ namespace Tyranno.Puzzle
         [SerializeField]
         private PuzzleState _puzzleState;
 
+        [SerializeField]
         private ChildImageArray[] _imageArray;
 
         [SerializeField]
@@ -31,11 +32,11 @@ namespace Tyranno.Puzzle
                         _puzzleState.SquareArray[a, b] = x;
                         if (x)
                         {
-                            _imageArray[a].childImageArray[b].color = _paintColor;
+                            _imageArray[a].ImageArray[b].color = _paintColor;
                         }
                         else
                         {
-                            _imageArray[a].childImageArray[b].color = _paintColor;
+                            _imageArray[a].ImageArray[b].color = _paintColor;
                         }
                     }).AddTo(gameObject);
                 }
@@ -51,6 +52,6 @@ namespace Tyranno.Puzzle
     [System.Serializable]
     public class ChildImageArray
     {
-        public Image[] childImageArray;
+        public Image[] ImageArray;
     }
 }

@@ -55,5 +55,10 @@ namespace Tyranno.Puzzle
                 }
             } 
         }
+        
+        public void SetValue(int i, int j)
+        {
+            MatrixColorFilledStates[i,j].Value = !MatrixColorFilledStates[i,j].Value;
+        }
     }
 }
