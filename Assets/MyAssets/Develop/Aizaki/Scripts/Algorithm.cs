@@ -236,12 +236,6 @@ namespace Tyranno.Puzzle.Algorithms
                 for (int j = 0; j < states.GetLength(1); j++)
                 {
                     converted[i, j] = states[states.GetLength(0) - i - 1, j];
-                }
-            }
-            for (int i = 0; i < states.GetLength(0); i++)
-            {
-                for (int j = 0; j < states.GetLength(1); j++)
-                {
                     if (converted[i, j] != states[i, j])
                     {
                         return false;
@@ -263,12 +257,6 @@ namespace Tyranno.Puzzle.Algorithms
                 for (int j = 0; j < states.GetLength(1); j++)
                 {
                     converted[i, j] = states[states.GetLength(0) - i - 1, states.GetLength(1) - j - 1];
-                }
-            }
-            for (int i = 0; i < states.GetLength(0); i++)
-            {
-                for (int j = 0; j < states.GetLength(1); j++)
-                {
                     if (converted[i, j] != states[i, j])
                     {
                         return false;
