@@ -78,7 +78,7 @@ namespace Tyranno.GameManager
         {
             _timeManager.ReadySecond
                 .FirstOrDefault(x => x >= 0)
-                .Delay(TimeSpan.FromSeconds(1))
+                .Delay(TimeSpan.FromSeconds(4))
                 .Subscribe(_ => _currentState.Value = GameState.Game)
                 .AddTo(gameObject);
             
