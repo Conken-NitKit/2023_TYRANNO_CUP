@@ -88,35 +88,12 @@ namespace TyrannoCup.Ranking
                 {
                     // スコア送信完了
                     Debug.Log("Send Ranking Score Success!!");
-
-                    GetLeaderboard();
                 },
                 (error) =>
                 {
                         Debug.LogError("Send Ranking Score Failed...");
                     Debug.LogError(error.GenerateErrorReport());
                 });
-        }
-
-        public void GetLeaderboard()
-        {
-            PlayFabClientAPI.GetLeaderboard(new GetLeaderboardRequest
-            {
-                StatisticName = "TimeAttack"
-            }, result =>
-            {
-                foreach (var item in result.Leaderboard)
-                {
-                    Debug.Log($"{item.Position + 1}位:{item.DisplayName} " + $"スコア {item.StatValue * -1}");
-                    if(item.Position >= 10)
-                    {
-                        break;
-                    }
-                }
-            }, error =>
-            {
-                Debug.Log(error.GenerateErrorReport());
-            });
         }
 
         private string CreateNewPlayerId()
