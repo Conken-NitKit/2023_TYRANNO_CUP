@@ -363,7 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0.09
   y: 0.09
-  image: {fileID: 200111249}
+  image: {fileID: 0}
 --- !u!1 &205745708
 GameObject:
   m_ObjectHideFlags: 0
