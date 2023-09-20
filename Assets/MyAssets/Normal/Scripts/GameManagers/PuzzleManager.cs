@@ -5,6 +5,7 @@ using Tyranno.Puzzle;
 using Tyranno.Puzzle.Algorithms;
 using UniRx;
 using UnityEngine;
+using Tyranno.Puzzle.Algorithms;
 
 using Random = UnityEngine.Random;
 
@@ -32,6 +33,9 @@ namespace Tyranno.GameManager
         
         [NonSerialized]
         public bool[] JudgmentConditions = new bool[100];
+
+        private BoolReactiveProperty _isConditionMet = new BoolReactiveProperty();
+        public IReadOnlyReactiveProperty<bool> IsConditionMet => _isConditionMet;
 
         private Func<bool[,],bool>[] ConditionsMethods =
         {
@@ -87,10 +91,12 @@ namespace Tyranno.GameManager
             {
                 if (!JudgmentConditions[i])
                 {
+                    _isConditionMet.SetValueAndForceNotify(false);
                     return;
                 }
             }
             
+            _isConditionMet.SetValueAndForceNotify(true);
             _currentWaveNum.Value++;
             ConditionNum++;
         }
