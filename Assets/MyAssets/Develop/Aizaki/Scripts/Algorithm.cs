@@ -6,7 +6,7 @@ using static UnityEngine.UI.Image;
 namespace Tyranno.Puzzle.Algorithms
 {
 
-    public class ConditionProfiles
+    public static class ConditionProfiles
     {
         /// <summary>
         /// 左辺から右辺までtrueのマスが連なっていることを判定します。
@@ -39,10 +39,10 @@ namespace Tyranno.Puzzle.Algorithms
                     int aroundCount = AroundCount(statesClone, currentLocation.x, currentLocation.y);
                     if (aroundCount == 0)
                     {
-                        if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) Out))
+                        if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) branchOut))
                         {
-                            currentLocation = Out.location;
-                            statesClone = Out.statesLog;
+                            currentLocation = branchOut.location;
+                            statesClone = branchOut.statesLog;
                             statesClone[lastBranchLocation.x, lastBranchLocation.y] = false;
                             branchStacks.Pop();
                             continue;
@@ -61,9 +61,9 @@ namespace Tyranno.Puzzle.Algorithms
                     else if (aroundCount >= 2)
                     {
                         statesClone[currentLocation.x, currentLocation.y] = false;
-                        if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) Out))
+                        if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) branchOut))
                         {
-                            int countTmp = Out.location == currentLocation ? Out.count + 1 : 0;
+                            int countTmp = branchOut.location == currentLocation ? branchOut.count + 1 : 0;
                             branchStacks.Push((currentLocation, countTmp, statesClone));
                             (int x, int y) branchloc = GetBranchByCount(statesClone, currentLocation.x, currentLocation.y, countTmp);
                             currentLocation = branchloc;
@@ -113,10 +113,10 @@ namespace Tyranno.Puzzle.Algorithms
                     int aroundCount = AroundCount(statesClone, currentLocation.x, currentLocation.y);
                     if (aroundCount == 0)
                     {
-                        if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) Out))
+                        if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) branchOut))
                         {
-                            currentLocation = Out.location;
-                            statesClone = Out.statesLog;
+                            currentLocation = branchOut.location;
+                            statesClone = branchOut.statesLog;
                             statesClone[lastBranchLocation.x, lastBranchLocation.y] = false;
                             branchStacks.Pop();
                             continue;
@@ -135,9 +135,9 @@ namespace Tyranno.Puzzle.Algorithms
                     else if (aroundCount >= 2)
                     {
                         statesClone[currentLocation.x, currentLocation.y] = false;
-                        if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) Out))
+                        if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) branchOut))
                         {
-                            int countTmp = Out.location == currentLocation ? Out.count + 1 : 0;
+                            int countTmp = branchOut.location == currentLocation ? branchOut.count + 1 : 0;
                             branchStacks.Push((currentLocation, countTmp, statesClone));
                             (int x, int y) branchloc = GetBranchByCount(statesClone, currentLocation.x, currentLocation.y, countTmp);
                             currentLocation = branchloc;
