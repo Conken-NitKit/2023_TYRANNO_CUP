@@ -14,6 +14,7 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private GameObject difficultyDialog;
     [SerializeField] private GameObject back;
     [SerializeField] private GameObject bluePostit;
+    [SerializeField] private GameObject rayCastBlocker;
     [SerializeField] private UnityEngine.UI.Button normalModeButton;
     [SerializeField] private UnityEngine.UI.Button challengeModeButton;
     [SerializeField] private UnityEngine.UI.Button rankingButton;
@@ -25,9 +26,14 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Button hardButton;
     [SerializeField] private UnityEngine.UI.Button hardcoreButton;
 
+    private SEManager seManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        seManager = Camera.main.GetComponent<SEManager>();
+        rayCastBlocker.SetActive(false);
+
         DG.Tweening.Sequence sequence = DOTween.Sequence();
         sequence.Append(katayaburi.transform.DOLocalMove(new Vector3(-13.9f, 0.8f, 0f), 0.8f));
         sequence.Append(hukidashi.transform.DORotate(new Vector3(0, 0, 359), 0.5f, RotateMode.FastBeyond360).SetEase(Ease.OutBack));
@@ -46,6 +52,11 @@ public class TitleManager : MonoBehaviour
         
     }
 
+    private void OnEnable()
+    {
+        rayCastBlocker.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -62,6 +73,7 @@ public class TitleManager : MonoBehaviour
         back.SetActive(true);
         normalModeButton.interactable = false;
         backButton.interactable = true;
+        seManager.PlayEnter1();
     }
 
     public void OnBackClick()
@@ -70,15 +82,18 @@ public class TitleManager : MonoBehaviour
         backButton.interactable = false;
         back.GetComponent<DifficultyDialogManager>().Disable();
         normalModeButton.interactable = true;
+        seManager.PlayEnter1();
     }
 
     public void OnChallengeModeClick()
     {
+        seManager.PlayEnter1();
         //ここにチャレンジモードシーン転移処理を書く
     }
 
     public void OnRankingClick()
     {
+        seManager.PlayEnter1();
         //ここにランキングシーン転移処理を書く
     }
 
@@ -86,8 +101,10 @@ public class TitleManager : MonoBehaviour
 
     public void OnDocterClick()
     {
-        this.crazySequence.Kill();
-        crazySequence = DOTween.Sequence();
+        doctor.interactable = false;
+
+        DG.Tweening.Sequence crazySequence = DOTween.Sequence();
+
         crazySequence.Append(noutore.transform.DORotate(new Vector3(0, 0, -20), 0.15f, RotateMode.Fast));
         crazySequence.Append(noutore.transform.DORotate(new Vector3(0, 0, 40), 0.3f, RotateMode.Fast).SetEase(Ease.InOutBounce).SetLoops(int.MaxValue, LoopType.Yoyo));
         crazySequence.Join(noutore.transform.DOScale(new Vector3(1.2f, 1.2f, 1f), 0.2f).SetEase(Ease.InOutBack).SetLoops(int.MaxValue, LoopType.Yoyo));
@@ -110,21 +127,31 @@ public class TitleManager : MonoBehaviour
 
     public void OnEasyClick()
     {
+        seManager.PlayEnter2();
         //ここにeasyの処理を書く
     }
 
     public void OnNormalClick()
     {
+        seManager.PlayEnter2();
         //ここにnormalの処理を書く
     }
 
     public void OnHardClick()
     {
+        seManager.PlayEnter2();
         //ここにhardの処理を書く
     }
 
     public void OnHardcoreClick()
     {
+        Camera.main.GetComponent<AudioSource>().Stop();
+        seManager.PlayBell();
         //ここにhardcoreの処理を書く
+    }
+
+    private void Transition()
+    {
+        rayCastBlocker.SetActive(true);
     }
 }
