@@ -7706,7 +7706,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u56DE\u7B54\u3059\u308B"
+  m_Text: "\u30AF\u30EA\u30A2"
 --- !u!222 &986680120
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12339,8 +12339,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: hoge6, Assembly-CSharp
+      - m_Target: {fileID: 2117875265}
+        m_TargetAssemblyTypeName: Tyranno.GameManager.PuzzleManager, Assembly-CSharp
         m_MethodName: OnClicked
         m_Mode: 1
         m_Arguments:
@@ -14087,10 +14087,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: hoge6, Assembly-CSharp
-        m_MethodName: OnClicked
-        m_Mode: 1
+      - m_Target: {fileID: 2117875256}
+        m_TargetAssemblyTypeName: Tyranno.Puzzle.PuzzleState, Assembly-CSharp
+        m_MethodName: SetAllElements
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -14970,6 +14970,7 @@ GameObject:
   - component: {fileID: 2117875262}
   - component: {fileID: 2117875263}
   - component: {fileID: 2117875264}
+  - component: {fileID: 2117875265}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -15397,7 +15398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initializeMethods: []
-  _gameSetting: {fileID: 0}
+  _gameSetting: {fileID: 11400000, guid: a4b726a1c84e94285a1d68d7b224f5d0, type: 2}
 --- !u!114 &2117875262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15422,7 +15423,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117875253}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df296dec4efaf4f718f275affad757a0, type: 3}
   m_Name: 
@@ -15455,6 +15456,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _puzzleState: {fileID: 2117875256}
+--- !u!114 &2117875265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117875253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c22c3d049fea54bf0bdd8645c0c5f824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _puzzleState: {fileID: 2117875256}
+  _gameSetting: {fileID: 11400000, guid: a4b726a1c84e94285a1d68d7b224f5d0, type: 2}
 --- !u!1 &2128256549
 GameObject:
   m_ObjectHideFlags: 0

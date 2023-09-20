@@ -45,6 +45,7 @@ namespace Tyranno.GameManager
         
         void Start()
         {
+            Debug.Log("スタートしてるよ！");
             _conditionNum = _gameSetting.StartConditionsNum;
         
             for (int i = 0; i < ConditionsMethods.Length; i++)

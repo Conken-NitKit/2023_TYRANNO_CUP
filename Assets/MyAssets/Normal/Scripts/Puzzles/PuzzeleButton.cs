@@ -35,7 +35,7 @@ namespace Tyranno.Puzzle
         /// 初期化処理
         /// マスが押されたイベントを購読してる
         /// </summary>
-        private void Initialize()
+        public void Initialize()
         {
             for (int i = 0; i < GlobalConst.SQUARE_SIZE; i++)
             {
