@@ -20,6 +20,16 @@ public class ResultAnimation : MonoBehaviour
 
     [SerializeField]
     private Image _resultBackGround;
+
+    [SerializeField]
+    private Image _clipboard;
+    
+    [SerializeField]
+    private Image[] _doctorCommentImages;
+    
+    [SerializeField]
+    private Text[] _doctorComments;
+    
     
     void Start()
     {
@@ -39,5 +49,20 @@ public class ResultAnimation : MonoBehaviour
         }
 
         sequence.Append(_resultBackGround.rectTransform.DOMove(new Vector2(0f, 0f), 1.5f).SetEase(Ease.OutBounce));
+
+        sequence.Append(_clipboard.rectTransform.DOLocalMove(new Vector2(125f, 0f), 1f).SetEase(Ease.OutBack));
+        sequence.Join(_clipboard.rectTransform.DOLocalRotate(new Vector3(0f, 0f, 705f),1f, RotateMode.FastBeyond360).SetEase(Ease.OutBack));
+        
+        foreach (var doctorCommentImage in _doctorCommentImages)
+        {
+            sequence.Join(doctorCommentImage.DOFade(1f, 1f).SetEase(Ease.Linear));
+        }
+        
+        foreach (var doctorComment in _doctorComments)
+        {
+            sequence.Join(doctorComment.DOFade(1f, 1f).SetEase(Ease.Linear));
+        }
+        
+        sequence.Play();
     }
 }
