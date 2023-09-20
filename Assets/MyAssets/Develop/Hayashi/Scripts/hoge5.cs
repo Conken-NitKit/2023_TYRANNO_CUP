@@ -24,7 +24,7 @@ public class hoge5 : MonoBehaviour
 
         _timeManager.GameSecond.Subscribe(x =>
         {
-            Debug.Log($"NowTime : {x}");
+            //Debug.Log($"NowTime : {x}");
         });
     }
 }
