@@ -4384,15 +4384,16 @@ RectTransform:
   m_GameObject: {fileID: 546012419}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 869927924}
   m_Father: {fileID: 2117875260}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -243.83, y: 11.2}
-  m_SizeDelta: {x: 193.63, y: 120.6}
+  m_AnchoredPosition: {x: -325, y: -50}
+  m_SizeDelta: {x: 200, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &546012421
 MonoBehaviour:
@@ -7032,17 +7033,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869927923}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2117875260}
+  m_Father: {fileID: 546012420}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -243.83002, y: 11.199997}
-  m_SizeDelta: {x: 105.16, y: 30}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &869927925
 MonoBehaviour:
@@ -7077,7 +7078,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: "\u4E0D\u6B63\u89E3\u3058\u3083"
 --- !u!222 &869927926
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14999,6 +15000,7 @@ GameObject:
   - component: {fileID: 2117875264}
   - component: {fileID: 2117875265}
   - component: {fileID: 2117875266}
+  - component: {fileID: 2117875267}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -15405,7 +15407,6 @@ RectTransform:
   - {fileID: 2010629516}
   - {fileID: 1969308310}
   - {fileID: 546012420}
-  - {fileID: 869927924}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -15514,6 +15515,21 @@ MonoBehaviour:
   _gameSetting: {fileID: 11400000, guid: 17451759409bf4ee1becd5cf83de73cd, type: 2}
   _conditionsDescription: {fileID: 11400000, guid: adfd2b71fa96b4cc59f535e86cd463e2, type: 2}
   _descriptionText: {fileID: 85564241}
+--- !u!114 &2117875267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117875253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed9321a1d7bf42f6bb8fa02e6a6d233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speechBubble: {fileID: 546012421}
+  _speech: {fileID: 869927925}
+  _puzzleManager: {fileID: 2117875265}
 --- !u!1 &2128256549
 GameObject:
   m_ObjectHideFlags: 0
