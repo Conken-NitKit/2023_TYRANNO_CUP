@@ -11,15 +11,13 @@ public class hoge5 : MonoBehaviour
 
     void Start()
     {
-        _timeManager.StartGameReadyCountDown();
-        
         _timeManager.ReadySecond.Subscribe(x =>
         {
-            Debug.Log($"Ready : {x}");
             if (x <= 0)
             {
                 _timeManager.StartGameCountUp();
             }
+            Debug.Log($"Ready : {x}");
         });
 
         _timeManager.GameSecond.Subscribe(x =>

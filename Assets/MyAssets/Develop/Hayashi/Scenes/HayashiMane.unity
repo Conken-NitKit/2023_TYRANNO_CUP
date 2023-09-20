@@ -7339,7 +7339,6 @@ GameObject:
   - component: {fileID: 947167176}
   - component: {fileID: 947167175}
   - component: {fileID: 947167178}
-  - component: {fileID: 947167179}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7365,7 +7364,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -7433,24 +7432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c09823bae2c4929947a79e1ba8debf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeManager: {fileID: 947167179}
---- !u!114 &947167179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 947167174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43147922ae1e34054be74c524cdae24f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _readySecond:
-    value: 3
-  _gameSecond:
-    value: 0
-  _playTimeAttack: 0
+  _timeManager: {fileID: 2117875262}
 --- !u!1 &964798115
 GameObject:
   m_ObjectHideFlags: 0
@@ -8527,7 +8509,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 19a8e26359ba14475af5b49e09c050f5, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -8539,7 +8521,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: "\u56DE\u7B54\u3059\u308B"
 --- !u!222 &1068326661
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12358,8 +12340,8 @@ MonoBehaviour:
   _puzzleState: {fileID: 2117875256}
   _gameSetting: {fileID: 11400000, guid: a4b726a1c84e94285a1d68d7b224f5d0, type: 2}
   _setumeis:
-  - "\u5DE6\u53F3\u58C1\u7E4B\u304E"
-  - "\u4E0A\u4E0B\u58C1\u7E4B\u304E"
+  - "\u5DE6\u3068\u53F3\u306E\u58C1\u304C\u7E4B\u304C\u3063\u3066\u3044\u308B\uFF08\u659C\u3081\u53EF\uFF09"
+  - "\u4E0A\u3068\u4E0B\u306E\u58C1\u304C\u7E4B\u304C\u3063\u3066\u3044\u308B\uFF08\u659C\u3081\u53EF\uFF09"
   - "\u5404\u58C1\u306B\u4E00\u3064\u3060\u3051\u5857\u308B"
   - "\u5DE6\u53F3\u5BFE\u79F0"
   - "\u70B9\u5BFE\u79F0"
@@ -12367,7 +12349,7 @@ MonoBehaviour:
   - "\u9ED2\u304C24\u500B\u4EE5\u4E0A"
   - "\u767D\u306E\u584A\u304C12\u500B\u4EE5\u4E0A"
   - "1\u884C\u307E\u305F\u306F1\u5217\u306B\u9ED2\u304C5\u500B\u672A\u6E80"
-  - "\u9ED2\u304C4\u500B\u4EE5\u4E0A\u56FA\u307E\u3063\u3066\u3044\u306A\u3044"
+  - "\u9ED2\u304C4\u500B\u4EE5\u4E0A\u306E\u584A\u306B\u306A\u3063\u3066\u3044\u306A\u3044"
   _text: {fileID: 85564241}
   _seigo: {fileID: 869927925}
 --- !u!1 &1685853573
@@ -14814,6 +14796,8 @@ GameObject:
   - component: {fileID: 2117875256}
   - component: {fileID: 2117875255}
   - component: {fileID: 2117875254}
+  - component: {fileID: 2117875261}
+  - component: {fileID: 2117875262}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -15227,6 +15211,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2117875261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117875253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c82924e08704b4f99a01dc1aa4e191a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initializeMethods: []
+--- !u!114 &2117875262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117875253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43147922ae1e34054be74c524cdae24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _readySecond:
+    value: 3
+  _gameSecond:
+    value: 0
+  _playTimeAttack: 0
 --- !u!1 &2128256549
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Tyranno.GameManager
 {
     /// <summary>
-    /// パズルの状況を管理するクラス
+    /// パズルの状況を管理するクラスw
     /// </summary>
     public class PuzzleManager : MonoBehaviour
     {
