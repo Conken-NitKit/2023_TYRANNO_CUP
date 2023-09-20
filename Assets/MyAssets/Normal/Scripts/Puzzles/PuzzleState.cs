@@ -101,7 +101,7 @@ namespace Tyranno.Puzzle
         /// 配列の全ての値に同値をセットするメソッド
         /// </summary>
         /// <param name="setValue"></param>
-        private void SetAllElements(bool setValue)
+        public void SetAllElements(bool setValue)
         {
             for (int i = 0; i < GlobalConst.SQUARE_SIZE; i++)
             {
