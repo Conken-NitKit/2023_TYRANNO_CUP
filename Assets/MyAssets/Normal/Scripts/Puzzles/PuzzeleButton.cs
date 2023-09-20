@@ -24,13 +24,7 @@ namespace Tyranno.Puzzle
 
         [SerializeField] 
         private ChildSquareInfoArray[] _squareInfoArray;
-
-        IEnumerator  Start()
-        {
-            yield return new WaitForSeconds(0.3f);
-
-            Initialize();
-        }
+        
         
         /// <summary>
         /// 初期化処理

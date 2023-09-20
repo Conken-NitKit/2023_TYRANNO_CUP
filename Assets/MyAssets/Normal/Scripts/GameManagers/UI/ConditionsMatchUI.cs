@@ -25,8 +25,6 @@ namespace Tyranno.GameManager.UI
             {
                 _speechBubble.rectTransform.anchoredPosition = new Vector2(-325f, -50f);
                 _speechBubble.rectTransform.localScale = new Vector3(0,0,0);
-                /*_speechBubble.rectTransform.DOAnchorPos(new Vector2(-325f, -50f), 0f).SetEase(Ease.OutBack);
-                _speechBubble.rectTransform.DOScale(0, 0f).SetEase(Ease.OutBack);*/
                 _speechBubble.rectTransform.DOAnchorPos(new Vector2(-230f, 10f), 0.3f).SetEase(Ease.OutBack);
                 _speechBubble.rectTransform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
                 

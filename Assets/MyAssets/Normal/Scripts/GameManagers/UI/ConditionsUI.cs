@@ -23,12 +23,6 @@ namespace Tyranno.GameManager.UI
         [SerializeField]
         private Text _descriptionText;
         
-        IEnumerator  Start()
-        {
-            yield return new WaitForSeconds(0.3f);
-
-            Initialize();
-        }
 
         public void Initialize()
         {

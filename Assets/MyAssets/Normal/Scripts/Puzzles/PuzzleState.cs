@@ -24,11 +24,6 @@ namespace Tyranno.Puzzle
         [SerializeField]
         private Color _paintColor = Color.black;
 
-        void Start()
-        {
-            Initialize();
-        }
-        
         /// <summary>
         /// 初期化処理
         /// 初期値の代入と配列化を行っています
