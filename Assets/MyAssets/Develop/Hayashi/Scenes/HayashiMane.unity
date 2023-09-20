@@ -670,7 +670,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 19a8e26359ba14475af5b49e09c050f5, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -7065,7 +7065,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 19a8e26359ba14475af5b49e09c050f5, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
@@ -12356,12 +12356,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _puzzleState: {fileID: 2117875256}
+  _gameSetting: {fileID: 11400000, guid: a4b726a1c84e94285a1d68d7b224f5d0, type: 2}
   _setumeis:
   - "\u5DE6\u53F3\u58C1\u7E4B\u304E"
   - "\u4E0A\u4E0B\u58C1\u7E4B\u304E"
-  - "\u5404\u58C1\u306B\u4E00\u3064\u3060\u3051\u5857\u308C\u308B"
+  - "\u5404\u58C1\u306B\u4E00\u3064\u3060\u3051\u5857\u308B"
   - "\u5DE6\u53F3\u5BFE\u79F0"
   - "\u70B9\u5BFE\u79F0"
+  - "\u4E0A\u4E0B\u5BFE\u79F0"
+  - "\u9ED2\u304C24\u500B\u4EE5\u4E0A"
+  - "\u767D\u306E\u584A\u304C12\u500B\u4EE5\u4E0A"
+  - "1\u884C\u307E\u305F\u306F1\u5217\u306B\u9ED2\u304C5\u500B\u672A\u6E80"
+  - "\u9ED2\u304C4\u500B\u4EE5\u4E0A\u56FA\u307E\u3063\u3066\u3044\u306A\u3044"
   _text: {fileID: 85564241}
   _seigo: {fileID: 869927925}
 --- !u!1 &1685853573
