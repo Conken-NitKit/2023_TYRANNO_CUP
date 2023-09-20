@@ -647,7 +647,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 183, y: 0}
+  m_SizeDelta: {x: 182.69, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &85564241
 MonoBehaviour:
@@ -7119,10 +7119,10 @@ RectTransform:
   - {fileID: 85564240}
   m_Father: {fileID: 748238667}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -3.31, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &913839730
 MonoBehaviour:
@@ -12268,6 +12268,7 @@ GameObject:
   - component: {fileID: 1676414446}
   - component: {fileID: 1676414445}
   - component: {fileID: 1676414444}
+  - component: {fileID: 1676414447}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -12351,6 +12352,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2117875266}
+        m_TargetAssemblyTypeName: Tyranno.GameManager.UI.ConditionsUI, Assembly-CSharp
+        m_MethodName: OnClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1676414445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12389,6 +12402,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1676414441}
   m_CullTransparentMesh: 1
+--- !u!114 &1676414447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676414441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5546399f40bf1498e95654fc748096ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1676414444}
+  _canHitRepeatedly: 1
 --- !u!1 &1685853573
 GameObject:
   m_ObjectHideFlags: 0
@@ -13933,8 +13960,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250.3, y: 0.9}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: 255, y: 0}
+  m_SizeDelta: {x: 200, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1969308311
 MonoBehaviour:
@@ -14862,7 +14889,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: -17}
+  m_SizeDelta: {x: 17, y: -17}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2102203660
 MonoBehaviour:
@@ -14971,6 +14998,7 @@ GameObject:
   - component: {fileID: 2117875263}
   - component: {fileID: 2117875264}
   - component: {fileID: 2117875265}
+  - component: {fileID: 2117875266}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -15469,7 +15497,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _puzzleState: {fileID: 2117875256}
-  _gameSetting: {fileID: 11400000, guid: a4b726a1c84e94285a1d68d7b224f5d0, type: 2}
+  _gameSetting: {fileID: 11400000, guid: 17451759409bf4ee1becd5cf83de73cd, type: 2}
+--- !u!114 &2117875266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117875253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a3f0f38669471ea1ddd1183456582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _puzzleManager: {fileID: 2117875265}
+  _gameSetting: {fileID: 11400000, guid: 17451759409bf4ee1becd5cf83de73cd, type: 2}
+  _conditionsDescription: {fileID: 11400000, guid: adfd2b71fa96b4cc59f535e86cd463e2, type: 2}
+  _descriptionText: {fileID: 85564241}
 --- !u!1 &2128256549
 GameObject:
   m_ObjectHideFlags: 0

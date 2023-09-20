@@ -24,10 +24,14 @@ namespace Tyranno.GameManager
         private IntReactiveProperty _currentWaveNum = new IntReactiveProperty(0);
         public IReadOnlyReactiveProperty<int> CurrentWaveNum => _currentWaveNum;
 
-        private int _conditionNum = 1;
+        [NonSerialized]
+        public int ConditionNum = 1;
 
         [NonSerialized]
         public int[] ConditionsOrder = new int[100];
+        
+        [NonSerialized]
+        public bool[] JudgmentConditions = new bool[100];
 
         private Func<bool[,],bool>[] ConditionsMethods =
         {
@@ -45,8 +49,12 @@ namespace Tyranno.GameManager
         
         void Start()
         {
-            Debug.Log("スタートしてるよ！");
-            _conditionNum = _gameSetting.StartConditionsNum;
+            ConditionNum = _gameSetting.StartConditionsNum;
+
+            for (int i = 0; i < _gameSetting.MaxConditionsNum; i++)
+            {
+                JudgmentConditions[i] = false;
+            }
         
             for (int i = 0; i < ConditionsMethods.Length; i++)
             {
@@ -65,18 +73,26 @@ namespace Tyranno.GameManager
     
         public void OnClicked()
         {
-            for (int i = 0; i < _conditionNum; i++)
+            for (int i = 0; i < ConditionNum; i++)
             {
                 if (!ConditionsMethods[ConditionsOrder[i]](_puzzleState.SquareArray))
                 {
-                    Debug.Log("不正解！");
+                    JudgmentConditions[i] = false;
+                    continue;
+                }
+                JudgmentConditions[i] = true;
+            }
+            
+            for (int i = 0; i < ConditionNum; i++)
+            {
+                if (!JudgmentConditions[i])
+                {
                     return;
                 }
             }
-
-            Debug.Log("正解！");
+            
             _currentWaveNum.Value++;
-            _conditionNum++;
+            ConditionNum++;
         }
     }
 }
