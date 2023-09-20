@@ -29,7 +29,6 @@ namespace Tyranno.UI
                 if (x <= 0)
                 {
                     _readyCount.text = "";
-                    _timeManager.StartGameCountUp();
                 }
 
                 _readyCount.text = $"{x}";

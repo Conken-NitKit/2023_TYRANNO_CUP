@@ -1038,6 +1038,81 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &101090387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 101090388}
+  - component: {fileID: 101090390}
+  - component: {fileID: 101090389}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &101090388
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101090387}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2117875260}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 300}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &101090389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101090387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 224edf35cd21a4eae9043583cf3aabc7, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &101090390
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101090387}
+  m_CullTransparentMesh: 1
 --- !u!1 &122989671
 GameObject:
   m_ObjectHideFlags: 0
@@ -6273,6 +6348,7 @@ GameObject:
   - component: {fileID: 708953463}
   - component: {fileID: 708953462}
   - component: {fileID: 708953461}
+  - component: {fileID: 708953464}
   m_Layer: 5
   m_Name: Decide
   m_TagString: Untagged
@@ -6344,7 +6420,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 708953462}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 708953464}
+        m_TargetAssemblyTypeName: Tyranno.Ui.Animations.StampAnimation, Assembly-CSharp
+        m_MethodName: PushStamp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &708953462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6383,6 +6471,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708953459}
   m_CullTransparentMesh: 1
+--- !u!114 &708953464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708953459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c7e9b5fc46f4b37b04ec4a1ca69851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _completeMethod:
+    m_PersistentCalls:
+      m_Calls: []
+  _stamp: {fileID: 1334859}
 --- !u!1 &713830939
 GameObject:
   m_ObjectHideFlags: 0
@@ -7038,6 +7142,9 @@ GameObject:
   - component: {fileID: 741208984}
   - component: {fileID: 741208983}
   - component: {fileID: 741208982}
+  - component: {fileID: 741208985}
+  - component: {fileID: 741208986}
+  - component: {fileID: 741208987}
   m_Layer: 5
   m_Name: Replay
   m_TagString: Untagged
@@ -7109,7 +7216,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 741208983}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 741208987}
+        m_TargetAssemblyTypeName: Tyranno.Ui.Animations.StampAnimation, Assembly-CSharp
+        m_MethodName: PushStamp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &741208983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7148,6 +7267,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741208980}
   m_CullTransparentMesh: 1
+--- !u!114 &741208985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741208980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5546399f40bf1498e95654fc748096ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 741208982}
+  _canHitRepeatedly: 1
+--- !u!114 &741208986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741208980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560d487d5bee74f5f9e81e1af6062cd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _completeMethod:
+    m_PersistentCalls:
+      m_Calls: []
+  _ball: {fileID: 101090389}
+--- !u!114 &741208987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741208980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c7e9b5fc46f4b37b04ec4a1ca69851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _completeMethod:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 741208986}
+        m_TargetAssemblyTypeName: Tyranno.Ui.Animations.FadeBallAnimation, Assembly-CSharp
+        m_MethodName: CloseAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _stamp: {fileID: 386109019}
 --- !u!1 &748238666
 GameObject:
   m_ObjectHideFlags: 0
@@ -12846,6 +13023,9 @@ GameObject:
   - component: {fileID: 1403209876}
   - component: {fileID: 1403209875}
   - component: {fileID: 1403209874}
+  - component: {fileID: 1403209877}
+  - component: {fileID: 1403209878}
+  - component: {fileID: 1403209879}
   m_Layer: 5
   m_Name: ToTitleButton
   m_TagString: Untagged
@@ -12917,7 +13097,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1403209875}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1403209879}
+        m_TargetAssemblyTypeName: Tyranno.Ui.Animations.StampAnimation, Assembly-CSharp
+        m_MethodName: PushStamp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1403209875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12956,6 +13148,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1403209872}
   m_CullTransparentMesh: 1
+--- !u!114 &1403209877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403209872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5546399f40bf1498e95654fc748096ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1403209874}
+  _canHitRepeatedly: 1
+--- !u!114 &1403209878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403209872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560d487d5bee74f5f9e81e1af6062cd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _completeMethod:
+    m_PersistentCalls:
+      m_Calls: []
+  _ball: {fileID: 101090389}
+--- !u!114 &1403209879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403209872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c7e9b5fc46f4b37b04ec4a1ca69851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _completeMethod:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1403209878}
+        m_TargetAssemblyTypeName: Tyranno.Ui.Animations.FadeBallAnimation, Assembly-CSharp
+        m_MethodName: CloseAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _stamp: {fileID: 2043187868}
 --- !u!1 &1438971009
 GameObject:
   m_ObjectHideFlags: 0
@@ -16197,8 +16447,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -60.1, y: 3.6}
-  m_SizeDelta: {x: 100, y: 60}
+  m_AnchoredPosition: {x: -60, y: 3.5}
+  m_SizeDelta: {x: 120, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1895371945
 MonoBehaviour:
@@ -18274,6 +18524,7 @@ RectTransform:
   - {fileID: 887697767}
   - {fileID: 1203757236}
   - {fileID: 1562545579}
+  - {fileID: 101090388}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -18336,7 +18587,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _gameSetting: {fileID: 11400000, guid: f6ee444793e2f45db8e82238863ffa1c, type: 2}
+  _gameSetting: {fileID: 11400000, guid: a4b726a1c84e94285a1d68d7b224f5d0, type: 2}
 --- !u!114 &2117875262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18367,7 +18618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _puzzleState: {fileID: 2117875256}
-  _gameSetting: {fileID: 11400000, guid: f6ee444793e2f45db8e82238863ffa1c, type: 2}
+  _gameSetting: {fileID: 11400000, guid: a4b726a1c84e94285a1d68d7b224f5d0, type: 2}
 --- !u!114 &2117875266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18381,7 +18632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _puzzleManager: {fileID: 2117875265}
-  _gameSetting: {fileID: 11400000, guid: f6ee444793e2f45db8e82238863ffa1c, type: 2}
+  _gameSetting: {fileID: 11400000, guid: a4b726a1c84e94285a1d68d7b224f5d0, type: 2}
   _conditionsDescription: {fileID: 11400000, guid: adfd2b71fa96b4cc59f535e86cd463e2, type: 2}
   _descriptionText: {fileID: 85564241}
 --- !u!114 &2117875267
@@ -18501,7 +18752,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeManager: {fileID: 2117875262}
   _countSeconds: {fileID: 541706882}
-  _gameSetting: {fileID: 11400000, guid: f6ee444793e2f45db8e82238863ffa1c, type: 2}
+  _gameSetting: {fileID: 11400000, guid: a4b726a1c84e94285a1d68d7b224f5d0, type: 2}
 --- !u!1 &2128256549
 GameObject:
   m_ObjectHideFlags: 0

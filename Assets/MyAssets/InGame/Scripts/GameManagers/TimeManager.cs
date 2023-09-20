@@ -67,6 +67,7 @@ namespace Tyranno.GameManager
         /// </summary>
         public void StartGameCountUp()
         {
+            Debug.Log("hoge");
             _playTimeAttack = true;
             _gameCountCoroutine = StartCoroutine(GameCountUpCoroutine());
         }
@@ -78,7 +79,6 @@ namespace Tyranno.GameManager
         {
             while (_playTimeAttack)
             {
-                Debug.Log("hoge");
                 yield return new WaitForSeconds(1);
                 _gameSecond.Value++;
             }
