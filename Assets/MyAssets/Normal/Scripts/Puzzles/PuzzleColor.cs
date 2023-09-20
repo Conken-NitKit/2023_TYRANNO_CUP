@@ -10,6 +10,9 @@ using Cysharp.Threading.Tasks;
 
 namespace Tyranno.Puzzle
 {
+    /// <summary>
+    /// パズルのマスの色を変えるクラス
+    /// </summary>
     public class PuzzleColor : MonoBehaviour
     {
         /*[SerializeField]
@@ -29,7 +32,11 @@ namespace Tyranno.Puzzle
 
             Initialized();
         }
-
+        
+        /// <summary>
+        /// 初期化処理
+        /// 現在のパズルの状況を購読してパズルの色を変更する
+        /// </summary>
         private void Initialized()
         {
             
@@ -58,12 +65,18 @@ namespace Tyranno.Puzzle
             Debug.Log("色変え終わり");
         }
         
+        /// <summary>
+        /// パズルのマスに塗る色を変更するメソッド
+        /// </summary>
         public void SetPaintColor(Color paintColor)
         {
             _paintColor = paintColor;
         }*/
     }
     
+    /// <summary>
+    /// c
+    /// </summary>
     /*[System.Serializable]
     public class ChildImageArray
     {

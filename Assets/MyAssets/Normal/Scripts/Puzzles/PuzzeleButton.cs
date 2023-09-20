@@ -10,6 +10,9 @@ using Cysharp.Threading.Tasks;
 
 namespace Tyranno.Puzzle
 {
+    /// <summary>
+    /// パズルのマス（ボタン）を管理するクラス
+    /// </summary>
     public class PuzzleButton : MonoBehaviour
     {
         [SerializeField]
@@ -28,6 +31,10 @@ namespace Tyranno.Puzzle
             Initialize();
         }
 
+        /// <summary>
+        /// 初期化処理
+        /// マスが押されたイベントを購読してる
+        /// </summary>
         private void Initialize()
         {
             for (int i = 0; i < GlobalConst.SQUARE_SIZE; i++)
@@ -39,19 +46,25 @@ namespace Tyranno.Puzzle
                     
                     _buttonArray[i].ButtonArray[j].onClick.AsObservable().Subscribe(_ =>
                     {
-                        _puzzleState.SetValue(_squareInfoArray[a].SquareInfoArray[b].Row, _squareInfoArray[a].SquareInfoArray[b].Column);
+                        _puzzleState.SetReverseValue(_squareInfoArray[a].SquareInfoArray[b].Row, _squareInfoArray[a].SquareInfoArray[b].Column);
                     }).AddTo(gameObject);
                 }
             }
         }
     }
 
+    /// <summary>
+    /// UI.Buttonを多次元配列にしてインスペクターに表示するためのクラス
+    /// </summary>
     [System.Serializable]
     class ChildButtonArray
     {
         public Button[] ButtonArray;
     }
     
+    /// <summary>
+    /// SquareInfoを多次元配列にしてインスペクターに表示するためのクラス
+    /// </summary>
     [System.Serializable]
     class ChildSquareInfoArray
     {
