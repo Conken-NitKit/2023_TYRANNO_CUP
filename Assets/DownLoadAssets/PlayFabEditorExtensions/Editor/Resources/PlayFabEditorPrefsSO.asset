@@ -16,7 +16,7 @@ MonoBehaviour:
   DevAccountToken: b147uh96r1ugwnnrpsgxxc3kazjy97bjzppw9stc9hy9u1maj7ky85xqfj68mrw8t4taabeus4noshhiajqc4f4enn5zwd7xfb1gwn7njiiww4wda6z34xjqnwt3i7fp4p6g5huwfe9u7imk69jk47iuii5bynkhzmowdgwgrg94mg3aqpdxsa3ayo943hestjchcxyg
   SelectedStudio: "\u30DE\u30A4 \u30B2\u30FC\u30E0 \u30B9\u30BF\u30B8\u30AA"
   SdkPath: Assets/PlayFabSDK
-  EdExPath: 
+  EdExPath: C:/Users/shigu/tyranno_cup/2023_TYRANNO_CUP/Assets\DownLoadAssets\PlayFabEditorExtensions\Editor
   LocalCloudScriptPath: 
   PanelIsShown: 0
   curMainMenuIdx: 0
