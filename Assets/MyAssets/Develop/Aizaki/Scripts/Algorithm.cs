@@ -13,7 +13,7 @@ namespace Tyranno.Puzzle.Algorithms
         /// 左辺から右辺までtrueのマスが連なっていることを判定します。
         /// 斜めも連なっていると判定します。
         /// </summary>
-        public static readonly Func<bool[,], bool> LeftToRightMaze = originalStates =>
+        public static readonly Func<bool[,], bool> IsLeftToRightMaze = originalStates =>
         {
             bool[,] states = ConvertAxis(originalStates);
 
@@ -87,7 +87,7 @@ namespace Tyranno.Puzzle.Algorithms
         /// 上辺から下辺までtrueのマスが連なっていることを判定します。
         /// 斜めも連なっていると判定します。
         /// </summary>
-        public static readonly Func<bool[,], bool> UpperToBottomMaze = originalStates =>
+        public static readonly Func<bool[,], bool> IsUpperToBottomMaze = originalStates =>
         {
             bool[,] states = ConvertAxis(originalStates);
 
@@ -160,7 +160,7 @@ namespace Tyranno.Puzzle.Algorithms
         /// <summary>
         /// 四辺にそれぞれひとつだけtrueのマスがあることを判定します。
         /// </summary>
-        public static readonly Func<bool[,], bool> SingleColoredWall = originalStates =>
+        public static readonly Func<bool[,], bool> IsSingleColoredWall = originalStates =>
         {
             bool[,] states = ConvertAxis(originalStates);
 
@@ -229,7 +229,7 @@ namespace Tyranno.Puzzle.Algorithms
         /// <summary>
         /// 図形が左右対称であるこか判定します。
         /// </summary>
-        public static readonly Func<bool[,], bool> Symmetry = originalStates =>
+        public static readonly Func<bool[,], bool> IsSymmetry = originalStates =>
         {
             bool[,] states = ConvertAxis(originalStates);
             bool[,] converted = new bool[states.GetLength(0), states.GetLength(1)];
@@ -251,7 +251,7 @@ namespace Tyranno.Puzzle.Algorithms
         /// <summary>
         /// 図形が上下対称であるかを判定します。
         /// </summary>
-        public static readonly Func<bool[,], bool> VerticalSymmetry = originalStates =>
+        public static readonly Func<bool[,], bool> IsVerticalSymmetry = originalStates =>
         {
             bool[,] states = ConvertAxis(originalStates);
             bool[,] converted = new bool[states.GetLength(0), states.GetLength(1)];
@@ -274,7 +274,7 @@ namespace Tyranno.Puzzle.Algorithms
         /// <summary>
         /// 図形が点対称であるかを判定します。
         /// </summary>
-        public static readonly Func<bool[,], bool> PointSymmetry = originalStates =>
+        public static readonly Func<bool[,], bool> IsPointSymmetry = originalStates =>
         {
             bool[,] states = ConvertAxis(originalStates);
             bool[,] converted = new bool[states.GetLength(0), states.GetLength(1)];
@@ -296,7 +296,7 @@ namespace Tyranno.Puzzle.Algorithms
         /// <summary>
         /// trueマスの個数が24以上の場合true、24未満の場合falseを返します。
         /// </summary>
-        public static readonly Func<bool[,], bool> QuantityLimit = originalStates =>
+        public static readonly Func<bool[,], bool> IsQuantityLimit = originalStates =>
         {
             var limit = 24;
             return ConvertToLinear(originalStates).FindAll(x => x).Count >= limit;
@@ -306,7 +306,7 @@ namespace Tyranno.Puzzle.Algorithms
         /// trueマスが4つ以上固まっているとfalse、そうでなければtrueを返します。
         /// 斜めのつながりは固まっていると判定しません。
         /// </summary>
-        public static readonly Func<bool[,], bool> TrueConnectionSizeLimit = originalStates =>
+        public static readonly Func<bool[,], bool> IsTrueConnectionSizeVaild = originalStates =>
         {
             bool[,] states = ConvertAxis(originalStates);
             HashSet<(int x, int y)> foundStates = new();
@@ -399,7 +399,7 @@ namespace Tyranno.Puzzle.Algorithms
         /// falseマスが12つ以上固まっているとtrue、そうでなければfalseを返します。
         /// 斜めのつながりは固まっていると判定しません。
         /// </summary>
-        public static readonly Func<bool[,], bool> FalseConnectionSizeLimit = originalStates =>
+        public static readonly Func<bool[,], bool> IsFalseConnectionSizeVaild = originalStates =>
         {
             int limit = 12;
 
@@ -498,7 +498,51 @@ namespace Tyranno.Puzzle.Algorithms
             return false;
         };
 
+        /// <summary>
+        /// 1行または1列に5個以上のTrueのマスが存在する場合false、そうでなければtrueを返します。
+        /// </summary>
+        public static readonly Func<bool[,], bool> IsTrueCountInRowOrColumnValid = originalStates =>
+        {
+            int limit = 5;
+            bool[,] states = ConvertAxis(originalStates);
 
+            int count = 0;
+
+            //行
+            for (int i = 0; i < states.GetLength(1); i++)
+            {
+                for (int j = 0; j < states.GetLength(0); j++)
+                {
+                    if (states[j, i])
+                    {
+                        count++;
+                        if (count >= limit)
+                        {
+                            return false;
+                        }
+                    }
+                }
+                count = 0;
+            }
+            //列
+            for (int i = 0; i < states.GetLength(0); i++)
+            {
+                for (int j = 0; j < states.GetLength(1); j++)
+                {
+                    if (states[i, j])
+                    {
+                        count++;
+                        if (count >= 5)
+                        {
+                            return false;
+                        }
+                    }
+                }
+                count = 0;
+            }
+
+            return true;
+        };
 
 
 
