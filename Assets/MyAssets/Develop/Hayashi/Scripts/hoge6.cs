@@ -16,10 +16,10 @@ public class hoge6 : MonoBehaviour
 
     private int _conditionNum = 1;
 
-    private int[] oi = new int[5];
+    private int[] oi = new int[10];
 
     [SerializeField]
-    private string[] _setumeis = new string[5];
+    private string[] _setumeis = new string[10];
 
     private string _setumeidayo;
 
@@ -30,29 +30,30 @@ public class hoge6 : MonoBehaviour
     
     private Func<bool[,],bool>[] funcs =
     {
-        ConditionProfiles.LeftToRightMaze,
-        ConditionProfiles.UpperToBottomMaze,
-        ConditionProfiles.SingleColoredWall,
-        ConditionProfiles.Symmetry, 
-        ConditionProfiles.PointSymmetry
+        ConditionProfiles.IsLeftToRightMaze,
+        ConditionProfiles.IsUpperToBottomMaze,
+        ConditionProfiles.IsSingleColoredWall,
+        ConditionProfiles.IsSymmetry, 
+        ConditionProfiles.IsPointSymmetry,
+        ConditionProfiles.IsVerticalSymmetry,
+        ConditionProfiles.IsQuantityLimit,
+        ConditionProfiles.IsFalseConnectionSizeVaild,
+        ConditionProfiles.IsTrueCountInRowOrColumnValid,
+        ConditionProfiles.IsTrueConnectionSizeVaild
     };
 
     void Start()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 10; i++)
         {
             oi[i] = i;
         }
         
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 10; i++)
         {
-            //（説明１）現在の要素を預けておく
             var temp = oi[i]; 
-            //（説明２）入れ替える先をランダムに選ぶ
-            int randomIndex = Random.Range(0, 5); 
-            //（説明３）現在の要素に上書き
+            int randomIndex = Random.Range(0, 10); 
             oi[i] = oi[randomIndex]; 
-            //（説明４）入れ替え元に預けておいた要素を与える
             oi[randomIndex] = temp; 
         }
         
