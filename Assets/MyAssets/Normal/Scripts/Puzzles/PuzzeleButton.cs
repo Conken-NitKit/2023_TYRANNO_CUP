@@ -1,6 +1,7 @@
 using System;
 using Tyranno.Common;
 using System;
+using System.Collections;
 using System.Threading;
 using System.Threading.Tasks;
 using UniRx;
@@ -24,18 +25,18 @@ namespace Tyranno.Puzzle
         [SerializeField] 
         private ChildSquareInfoArray[] _squareInfoArray;
 
-        async Task Start()
+        IEnumerator  Start()
         {
-            Thread.Sleep(3000);
+            yield return new WaitForSeconds(0.3f);
 
             Initialize();
         }
-
+        
         /// <summary>
         /// 初期化処理
         /// マスが押されたイベントを購読してる
         /// </summary>
-        private void Initialize()
+        public void Initialize()
         {
             for (int i = 0; i < GlobalConst.SQUARE_SIZE; i++)
             {
