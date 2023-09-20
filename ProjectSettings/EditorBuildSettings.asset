@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MyAssets/Develop/Hayashi/Scenes/HayashiMane.unity
     guid: fe45faf51f0f8436c84d158c319735a7
+  - enabled: 1
+    path: Assets/MyAssets/Develop/Moriwaki/Scenes/Moriwaki.unity
+    guid: ab59c9465653b48539b65f95e41f346e
+  - enabled: 1
+    path: Assets/MyAssets/Develop/Moriwaki/Scenes/RankingTest.unity
+    guid: 68272f7d0cefcb448a8eac395a2ad136
   m_configObjects: {}
