@@ -98,12 +98,15 @@ public class TitleManager : MonoBehaviour
         seManager.PlayEnter1();
         //ここにランキングシーン転移処理を書く
     }
-
-    DG.Tweening.Sequence crazySequence = DOTween.Sequence();
+    
 
     public void OnDocterClick()
     {
         doctor.interactable = false;
+
+        doctor.gameObject.transform.DORotate(new Vector3(0, 0, 359), 0.1f, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental);
+
+        Camera.main.GetComponent<AudioSource>().pitch = 1.2f;
 
         DG.Tweening.Sequence crazySequence = DOTween.Sequence();
 
@@ -155,7 +158,7 @@ public class TitleManager : MonoBehaviour
 
     private void Transition(Action action)
     {
-        rayCastBlocker.SetActive(true); 
+        rayCastBlocker.SetActive(true);
         var sequence = DOTween.Sequence();
         sequence.Append(transitionImage.DOFillAmount(1, 0.5f));
         sequence.AppendInterval(3f);
