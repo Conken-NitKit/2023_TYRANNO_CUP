@@ -163,62 +163,64 @@ namespace Tyranno.Puzzle.Algorithms
         {
             bool[,] states = ConvertAxis(originalStates);
 
+
+            var counter = 0;
+
             //上辺
-            var counter1 = 0;
             for (int i = 0; i < states.GetLength(0); i++)
             {
                 if (states[i, 0])
                 {
-                    counter1++;
-                    if (counter1 > 1)
+                    counter++;
+                    if (counter > 1)
                     {
                         return false;
                     }
                 }
             }
-            if (counter1 == 0) return false;
+            if (counter == 0) return false;
+            counter = 0;
             //下辺
-            var counter2 = 0;
             for (int i = 0; i < states.GetLength(0); i++)
             {
                 if (states[i, states.GetLength(1) - 1])
                 {
-                    counter2++;
-                    if (counter2 > 1)
+                    counter++;
+                    if (counter > 1)
                     {
                         return false;
                     }
                 }
             }
-            if (counter2 == 0) return false;
+            if (counter == 0) return false;
+            counter = 0;
             //左辺
-            var counter3 = 0;
             for (int i = 0; i < states.GetLength(1); i++)
             {
                 if (states[0, i])
                 {
-                    counter3++;
-                    if (counter3 > 1)
+                    counter++;
+                    if (counter > 1)
                     {
                         return false;
                     }
                 }
             }
-            if (counter3 == 0) return false;
+            if (counter == 0) return false;
+            counter = 0;
             //右辺
-            var counter4 = 0;
             for (int i = 0; i < states.GetLength(1); i++)
             {
                 if (states[states.GetLength(0) - 1, i])
                 {
-                    counter4++;
-                    if (counter4 > 1)
+                    counter++;
+                    if (counter > 1)
                     {
                         return false;
                     }
                 }
             }
-            if (counter4 == 0) return false;
+            if (counter == 0) return false;
 
             return true;
         };
@@ -268,7 +270,7 @@ namespace Tyranno.Puzzle.Algorithms
         };
 
         /// <summary>
-        /// 入力された多次元行列のx,y軸を反転させます。
+        /// 入力された多次元配列のx,y軸を反転させます。
         /// [0,0]からの距離は変化しません。
         /// </summary>
         /// <param name="original"></param>
