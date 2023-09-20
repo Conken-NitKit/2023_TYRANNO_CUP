@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 using static UnityEngine.UI.Image;
 
 namespace Tyranno.Puzzle.Algorithms
@@ -9,6 +9,22 @@ namespace Tyranno.Puzzle.Algorithms
 
     public static class ConditionProfiles
     {
+        public static readonly List<Func<bool[,], bool>> AllProfiles = new()
+        {
+            IsLeftToRightMaze,
+            IsUpperToBottomMaze,
+            IsDoubleColoredWall,
+            IsSymmetry,
+            IsPointSymmetry,
+            IsVerticalSymmetry,
+            IsQuantityLimit,
+            IsFalseConnectionSizeVaild,
+            IsTrueCountInRowOrColumnValid,
+            IsTrueConnectionSizeVaild,
+            IsSurroundedByFalse,
+            IsHorizontallyOrVerticallyConnected
+        };
+
         /// <summary>
         /// 左辺から右辺までtrueのマスが連なっていることを判定します。
         /// 斜めも連なっていると判定します。
@@ -165,7 +181,7 @@ namespace Tyranno.Puzzle.Algorithms
             bool[,] states = ConvertAxis(originalStates);
 
 
-            var counter = 0;
+            int counter = 0;
 
             //上辺
             for (int i = 0; i < states.GetLength(0); i++)
@@ -234,7 +250,7 @@ namespace Tyranno.Puzzle.Algorithms
             bool[,] states = ConvertAxis(originalStates);
 
 
-            var counter = 0;
+            int counter = 0;
 
             //上辺
             for (int i = 0; i < states.GetLength(0); i++)
@@ -351,7 +367,7 @@ namespace Tyranno.Puzzle.Algorithms
         /// </summary>
         public static readonly Func<bool[,], bool> IsQuantityLimit = originalStates =>
         {
-            var limit = 24;
+            int limit = 24;
             return ConvertToLinear(originalStates).FindAll(x => x).Count >= limit;
         };
 
@@ -369,7 +385,7 @@ namespace Tyranno.Puzzle.Algorithms
             {
                 for (int j = 0; j < states.GetLength(0); j++)
                 {
-                    foreach (var (x, y) in foundStates)
+                    foreach ((int x, int y) in foundStates)
                     {
                         states[x, y] = false;
                     }
@@ -466,13 +482,13 @@ namespace Tyranno.Puzzle.Algorithms
             }
 
             HashSet<(int x, int y)> foundStates = new();
-            
+
 
             for (int i = 0; i < states.GetLength(1); i++)
             {
                 for (int j = 0; j < states.GetLength(0); j++)
                 {
-                    foreach (var (x, y) in foundStates)
+                    foreach ((int x, int y) in foundStates)
                     {
                         states[x, y] = false;
                     }
@@ -649,7 +665,7 @@ namespace Tyranno.Puzzle.Algorithms
         private static List<bool> ConvertToLinear(bool[,] original)
         {
             List<bool> converted = new();
-            foreach (var state in original)
+            foreach (bool state in original)
             {
                 converted.Add(state);
             }
@@ -730,7 +746,7 @@ namespace Tyranno.Puzzle.Algorithms
         private static List<(bool, (int x, int y))> Around4(bool[,] states, int x, int y)
         {
             List<(bool, (int x, int y))> values = new();
-            
+
             if (x - 1 >= 0)
             {
                 values.Add((states[x - 1, y], (x - 1, y)));
@@ -805,7 +821,7 @@ namespace Tyranno.Puzzle.Algorithms
         private static int AroundCount4(bool[,] states, int x, int y)
         {
             int count = 0;
-            
+
             if (x - 1 >= 0 && states[x - 1, y])
             {
                 count++;
