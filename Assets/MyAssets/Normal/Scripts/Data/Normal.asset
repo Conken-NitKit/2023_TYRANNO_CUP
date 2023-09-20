@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaveNum: 3
   StartConditionsNum: 3
+  MaxConditionsNum: 10
   isTimeAttack: 0

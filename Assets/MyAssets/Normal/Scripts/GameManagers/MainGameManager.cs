@@ -91,6 +91,12 @@ namespace Tyranno.GameManager
             {
                 _timeManager.StartGameCountUp();
             }
+            
+            
+            _puzzleManager.CurrentWaveNum            
+                .FirstOrDefault(x => x >= _gameSetting.WaveNum)
+                .Subscribe(_ => _currentState.Value = GameState.Result)
+                .AddTo(gameObject);
         }
 
         void Result()

@@ -7,5 +7,6 @@ public class GameSetting : ScriptableObject
 {
     public int WaveNum;
     public int StartConditionsNum;
+    public int MaxConditionsNum;
     public bool isTimeAttack;
 }
