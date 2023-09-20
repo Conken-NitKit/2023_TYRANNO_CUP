@@ -306,7 +306,7 @@ namespace Tyranno.Puzzle.Algorithms
         /// trueマスが4つ以上固まっているとfalse、そうでなければtrueを返します。
         /// 斜めのつながりは固まっていると判定しません。
         /// </summary>
-        public static readonly Func<bool[,], bool> ConnectionSizeLimit = originalStates =>
+        public static readonly Func<bool[,], bool> TrueConnectionSizeLimit = originalStates =>
         {
             bool[,] states = ConvertAxis(originalStates);
             HashSet<(int x, int y)> foundStates = new();
@@ -394,6 +394,115 @@ namespace Tyranno.Puzzle.Algorithms
             }
             return true;
         };
+
+        /// <summary>
+        /// falseマスが12つ以上固まっているとtrue、そうでなければfalseを返します。
+        /// 斜めのつながりは固まっていると判定しません。
+        /// </summary>
+        public static readonly Func<bool[,], bool> FalseConnectionSizeLimit = originalStates =>
+        {
+            int limit = 12;
+
+            bool[,] states = ConvertAxis(originalStates);
+            for (int i = 0; i < states.GetLength(1); i++)
+            {
+                for (int j = 0; j < states.GetLength(0); j++)
+                {
+                    states[j, i] = !states[j, i];
+                }
+            }
+
+            HashSet<(int x, int y)> foundStates = new();
+            
+
+            for (int i = 0; i < states.GetLength(1); i++)
+            {
+                for (int j = 0; j < states.GetLength(0); j++)
+                {
+                    foreach (var (x, y) in foundStates)
+                    {
+                        states[x, y] = false;
+                    }
+
+                    foundStates = new();
+
+                    if (!states[j, i])
+                    {
+                        continue;
+                    }
+
+                    bool[,] statesClone = states;
+                    Stack<((int x, int y) location, int count, bool[,] statesLog)> branchStacks = new();
+                    (int x, int y) currentLocation = (j, i);
+                    (int x, int y) lastBranchLocation = (0, 0);
+                    foundStates.Add(currentLocation);
+
+                    for (int k = 0; k <= states.Length + 1; j++)
+                    {
+
+                        int aroundCount = AroundCount4(statesClone, currentLocation.x, currentLocation.y);
+                        if (aroundCount == 0)
+                        {
+                            if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) branchOut))
+                            {
+                                currentLocation = branchOut.location;
+                                statesClone = branchOut.statesLog;
+                                statesClone[lastBranchLocation.x, lastBranchLocation.y] = false;
+                                branchStacks.Pop();
+                                continue;
+                            }
+                            else
+                            {
+                                break;
+                            }
+
+                        }
+                        else if (aroundCount == 1)
+                        {
+                            statesClone[currentLocation.x, currentLocation.y] = false;
+                            currentLocation = GetBranchByCount4(statesClone, currentLocation.x, currentLocation.y, 0);
+                            foundStates.Add(currentLocation);
+                            if (foundStates.Count >= limit)
+                            {
+                                //Debug.Log(foundStates.Select(x => $"{x.x},{x.y}").Aggregate((x, y) => $"{x},{y}"));
+                                return true;
+                            }
+                        }
+                        else if (aroundCount >= 2)
+                        {
+                            statesClone[currentLocation.x, currentLocation.y] = false;
+                            if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) branchOut))
+                            {
+                                int countTmp = branchOut.location == currentLocation ? branchOut.count + 1 : 0;
+                                branchStacks.Push((currentLocation, countTmp, statesClone));
+                                (int x, int y) branchloc = GetBranchByCount4(statesClone, currentLocation.x, currentLocation.y, countTmp);
+                                currentLocation = branchloc;
+                                lastBranchLocation = branchloc;
+
+                                foundStates.Add(currentLocation);
+                                if (foundStates.Count >= limit)
+                                {
+                                    //Debug.Log(foundStates.Select(x => $"{x.x},{x.y}").Aggregate((x, y) => $"{x},{y}"));
+                                    return true;
+                                }
+                            }
+                            else
+                            {
+                                branchStacks.Push((currentLocation, 0, statesClone));
+                            }
+
+                        }
+                    }
+                }
+            }
+            return false;
+        };
+
+
+
+
+
+
 
         /// <summary>
         /// 二次元配列を一次元配列に変換します。
