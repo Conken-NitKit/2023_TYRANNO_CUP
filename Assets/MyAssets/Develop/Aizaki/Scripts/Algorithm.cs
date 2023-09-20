@@ -13,7 +13,7 @@ namespace Tyranno.Puzzle.Algorithms
         {
             IsLeftToRightMaze,
             IsUpperToBottomMaze,
-            IsDoubleColoredWall,
+            IsSingleColoredWall,
             IsSymmetry,
             IsPointSymmetry,
             IsVerticalSymmetry,
@@ -176,7 +176,7 @@ namespace Tyranno.Puzzle.Algorithms
         /// <summary>
         /// 四辺にちょうど1つtrueのマスがあることを判定します。
         /// </summary>
-        private static readonly Func<bool[,], bool> _IsSingleColoredWall = originalStates =>
+        public static readonly Func<bool[,], bool> IsSingleColoredWall = originalStates =>
         {
             bool[,] states = ConvertAxis(originalStates);
 
@@ -245,7 +245,7 @@ namespace Tyranno.Puzzle.Algorithms
         /// <summary>
         /// 四辺にちょうど2つtrueのマスがあることを判定します。
         /// </summary>
-        public static readonly Func<bool[,], bool> IsDoubleColoredWall = originalStates =>
+        private static readonly Func<bool[,], bool> IsDoubleColoredWall = originalStates =>
         {
             bool[,] states = ConvertAxis(originalStates);
 

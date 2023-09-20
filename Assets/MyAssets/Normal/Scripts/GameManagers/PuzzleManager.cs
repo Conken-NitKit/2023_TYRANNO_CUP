@@ -41,7 +41,7 @@ namespace Tyranno.GameManager
         {
             ConditionProfiles.IsLeftToRightMaze,
             ConditionProfiles.IsUpperToBottomMaze,
-            ConditionProfiles.IsDoubleColoredWall,
+            ConditionProfiles.IsSingleColoredWall,
             ConditionProfiles.IsSymmetry, 
             ConditionProfiles.IsPointSymmetry,
             ConditionProfiles.IsVerticalSymmetry,
