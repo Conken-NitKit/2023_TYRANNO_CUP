@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Tyranno.GameManager;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Tyranno.GameManager.UI
+namespace Tyranno.UI
 {
     public class ConditionsUI : MonoBehaviour
     {
