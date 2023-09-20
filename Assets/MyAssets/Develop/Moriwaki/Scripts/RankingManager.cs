@@ -7,7 +7,7 @@ using PlayFab.ClientModels;
 using UnityEngine.UI;
 //using System.Text;
 
-public class Ranking_Manager : MonoBehaviour
+public class RankingManager : MonoBehaviour
 {
     public InputField inputFieldName;
     public InputField inputFieldScore;
