@@ -14,6 +14,9 @@ public class hoge6 : MonoBehaviour
     [SerializeField]
     private PuzzleState _puzzleState;
 
+    [SerializeField]
+    private GameSetting _gameSetting;
+
     private int _conditionNum = 1;
 
     private int[] oi = new int[10];
@@ -44,6 +47,8 @@ public class hoge6 : MonoBehaviour
 
     void Start()
     {
+        _conditionNum = _gameSetting.StartConditionsNum;
+        
         for (int i = 0; i < 10; i++)
         {
             oi[i] = i;
@@ -56,9 +61,11 @@ public class hoge6 : MonoBehaviour
             oi[i] = oi[randomIndex]; 
             oi[randomIndex] = temp; 
         }
-        
 
-        _setumeidayo = _setumeis[oi[0]];
+        for (int i = 0; i < _conditionNum; i++)
+        {
+            _setumeidayo += $"{_setumeis[oi[i]]}\n\n";
+        }
         _text.text = _setumeidayo;
     }
     
@@ -74,7 +81,7 @@ public class hoge6 : MonoBehaviour
         }
         
         _seigo.text = "正解じゃ！";
-        _setumeidayo += $"\n\n{_setumeis[oi[_conditionNum]]}";
+        _setumeidayo += $"{_setumeis[oi[_conditionNum]]}\n\n";
         _text.text = _setumeidayo;
         _conditionNum++;
     }

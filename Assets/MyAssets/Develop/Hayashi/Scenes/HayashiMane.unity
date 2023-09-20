@@ -12356,6 +12356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _puzzleState: {fileID: 2117875256}
+  _gameSetting: {fileID: 11400000, guid: a4b726a1c84e94285a1d68d7b224f5d0, type: 2}
   _setumeis:
   - "\u5DE6\u53F3\u58C1\u7E4B\u304E"
   - "\u4E0A\u4E0B\u58C1\u7E4B\u304E"
