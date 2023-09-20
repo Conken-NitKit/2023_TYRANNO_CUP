@@ -163,62 +163,64 @@ namespace Tyranno.Puzzle.Algorithms
         {
             bool[,] states = ConvertAxis(originalStates);
 
+
+            var counter = 0;
+
             //ã•Ó
-            var counter1 = 0;
             for (int i = 0; i < states.GetLength(0); i++)
             {
                 if (states[i, 0])
                 {
-                    counter1++;
-                    if (counter1 > 1)
+                    counter++;
+                    if (counter > 1)
                     {
                         return false;
                     }
                 }
             }
-            if (counter1 == 0) return false;
+            if (counter == 0) return false;
+            counter = 0;
             //‰º•Ó
-            var counter2 = 0;
             for (int i = 0; i < states.GetLength(0); i++)
             {
                 if (states[i, states.GetLength(1) - 1])
                 {
-                    counter2++;
-                    if (counter2 > 1)
+                    counter++;
+                    if (counter > 1)
                     {
                         return false;
                     }
                 }
             }
-            if (counter2 == 0) return false;
+            if (counter == 0) return false;
+            counter = 0;
             //¶•Ó
-            var counter3 = 0;
             for (int i = 0; i < states.GetLength(1); i++)
             {
                 if (states[0, i])
                 {
-                    counter3++;
-                    if (counter3 > 1)
+                    counter++;
+                    if (counter > 1)
                     {
                         return false;
                     }
                 }
             }
-            if (counter3 == 0) return false;
+            if (counter == 0) return false;
+            counter = 0;
             //‰E•Ó
-            var counter4 = 0;
             for (int i = 0; i < states.GetLength(1); i++)
             {
                 if (states[states.GetLength(0) - 1, i])
                 {
-                    counter4++;
-                    if (counter4 > 1)
+                    counter++;
+                    if (counter > 1)
                     {
                         return false;
                     }
                 }
             }
-            if (counter4 == 0) return false;
+            if (counter == 0) return false;
 
             return true;
         };
