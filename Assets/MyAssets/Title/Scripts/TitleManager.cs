@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.UIElements;
 using Unity.VisualScripting;
+using System;
 
 public class TitleManager : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Button normalButton;
     [SerializeField] private UnityEngine.UI.Button hardButton;
     [SerializeField] private UnityEngine.UI.Button hardcoreButton;
+    [SerializeField] private UnityEngine.UI.Image transitionImage;
 
     private SEManager seManager;
 
@@ -145,13 +147,18 @@ public class TitleManager : MonoBehaviour
 
     public void OnHardcoreClick()
     {
-        Camera.main.GetComponent<AudioSource>().Stop();
-        seManager.PlayBell();
+        Camera.main.GetComponent<AudioSource>().pitch = 0.8f;
+        //seManager.PlayBell();
         //‚±‚±‚Éhardcore‚Ìˆ—‚ð‘‚­
+        Transition(()=>Debug.Log("“]ˆÚ"));
     }
 
-    private void Transition()
+    private void Transition(Action action)
     {
-        rayCastBlocker.SetActive(true);
+        rayCastBlocker.SetActive(true); 
+        var sequence = DOTween.Sequence();
+        sequence.Append(transitionImage.DOFillAmount(1, 0.5f));
+        sequence.AppendInterval(3f);
+        sequence.Play().OnComplete(() => action());
     }
 }
