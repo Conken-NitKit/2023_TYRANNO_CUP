@@ -11,7 +11,6 @@ namespace Tyranno.Ui.Animations
         [SerializeField]
         private Image[] _curtains;
 
-        
         void Start()
         {
             OpenAnimation();

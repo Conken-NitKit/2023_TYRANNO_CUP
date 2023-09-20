@@ -37,7 +37,6 @@ namespace Tyranno.UI
 
         public void OnClicked()
         {
-            Debug.Log(_puzzleManager.ConditionNum);
             StartCoroutine(DisplayCoroutine());
         }
 
@@ -48,7 +47,6 @@ namespace Tyranno.UI
 
             for (int i = 0; i < _puzzleManager.ConditionNum; i++)
             {
-                Debug.Log(_puzzleManager.JudgmentConditions[i]);
                 if (!_puzzleManager.JudgmentConditions[i])
                 {
                     _description += $"\n<color=#000000>{_conditionsDescription.DescriptionTexts[_puzzleManager.ConditionsOrder[i]]}</color>\n";

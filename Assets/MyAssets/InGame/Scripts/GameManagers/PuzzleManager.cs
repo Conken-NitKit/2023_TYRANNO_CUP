@@ -5,7 +5,6 @@ using Tyranno.Puzzle;
 using Tyranno.Puzzle.Algorithms;
 using UniRx;
 using UnityEngine;
-using Tyranno.Puzzle.Algorithms;
 
 using Random = UnityEngine.Random;
 

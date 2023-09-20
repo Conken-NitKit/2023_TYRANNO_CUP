@@ -17801,15 +17801,16 @@ GameObject:
   - component: {fileID: 2117875256}
   - component: {fileID: 2117875255}
   - component: {fileID: 2117875254}
-  - component: {fileID: 2117875261}
   - component: {fileID: 2117875262}
-  - component: {fileID: 2117875265}
-  - component: {fileID: 2117875266}
   - component: {fileID: 2117875267}
   - component: {fileID: 2117875268}
   - component: {fileID: 2117875269}
   - component: {fileID: 2117875270}
   - component: {fileID: 2117875271}
+  - component: {fileID: 2117875272}
+  - component: {fileID: 2117875266}
+  - component: {fileID: 2117875265}
+  - component: {fileID: 2117875261}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -18268,7 +18269,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _gameSetting: {fileID: 11400000, guid: a4b726a1c84e94285a1d68d7b224f5d0, type: 2}
+  _gameSetting: {fileID: 11400000, guid: f6ee444793e2f45db8e82238863ffa1c, type: 2}
 --- !u!114 &2117875262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18299,7 +18300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _puzzleState: {fileID: 2117875256}
-  _gameSetting: {fileID: 11400000, guid: a4b726a1c84e94285a1d68d7b224f5d0, type: 2}
+  _gameSetting: {fileID: 11400000, guid: f6ee444793e2f45db8e82238863ffa1c, type: 2}
 --- !u!114 &2117875266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18313,7 +18314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _puzzleManager: {fileID: 2117875265}
-  _gameSetting: {fileID: 11400000, guid: a4b726a1c84e94285a1d68d7b224f5d0, type: 2}
+  _gameSetting: {fileID: 11400000, guid: f6ee444793e2f45db8e82238863ffa1c, type: 2}
   _conditionsDescription: {fileID: 11400000, guid: adfd2b71fa96b4cc59f535e86cd463e2, type: 2}
   _descriptionText: {fileID: 85564241}
 --- !u!114 &2117875267
@@ -18401,6 +18402,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _readyCountGage: {fileID: 1797981434}
   _timeManager: {fileID: 2117875262}
+--- !u!114 &2117875272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117875253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f08a2e1dcbca41be9ff5b2b4a852cc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameSetting: {fileID: 11400000, guid: f6ee444793e2f45db8e82238863ffa1c, type: 2}
+  _timeManager: {fileID: 2117875262}
+  _inputTimeAttack: {fileID: 952976283}
+  _teacherComment: {fileID: 1762194126}
+  _scoreType: {fileID: 256009207}
+  _score: {fileID: 1895371945}
 --- !u!1 &2128256549
 GameObject:
   m_ObjectHideFlags: 0
