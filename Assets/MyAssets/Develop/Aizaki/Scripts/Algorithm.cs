@@ -158,9 +158,9 @@ namespace Tyranno.Puzzle.Algorithms
         };
 
         /// <summary>
-        /// 四辺にそれぞれひとつだけtrueのマスがあることを判定します。
+        /// 四辺にちょうど1つtrueのマスがあることを判定します。
         /// </summary>
-        public static readonly Func<bool[,], bool> IsSingleColoredWall = originalStates =>
+        private static readonly Func<bool[,], bool> _IsSingleColoredWall = originalStates =>
         {
             bool[,] states = ConvertAxis(originalStates);
 
@@ -222,6 +222,59 @@ namespace Tyranno.Puzzle.Algorithms
                 }
             }
             if (counter == 0) return false;
+
+            return true;
+        };
+
+        /// <summary>
+        /// 四辺にちょうど2つtrueのマスがあることを判定します。
+        /// </summary>
+        public static readonly Func<bool[,], bool> IsDoubleColoredWall = originalStates =>
+        {
+            bool[,] states = ConvertAxis(originalStates);
+
+
+            var counter = 0;
+
+            //上辺
+            for (int i = 0; i < states.GetLength(0); i++)
+            {
+                if (states[i, 0])
+                {
+                    counter++;
+                }
+            }
+            if (counter != 2) return false;
+            counter = 0;
+            //下辺
+            for (int i = 0; i < states.GetLength(0); i++)
+            {
+                if (states[i, states.GetLength(1) - 1])
+                {
+                    counter++;
+                }
+            }
+            if (counter != 2) return false;
+            counter = 0;
+            //左辺
+            for (int i = 0; i < states.GetLength(1); i++)
+            {
+                if (states[0, i])
+                {
+                    counter++;
+                }
+            }
+            if (counter != 2) return false;
+            counter = 0;
+            //右辺
+            for (int i = 0; i < states.GetLength(1); i++)
+            {
+                if (states[states.GetLength(0) - 1, i])
+                {
+                    counter++;
+                }
+            }
+            if (counter != 2) return false;
 
             return true;
         };
@@ -499,7 +552,7 @@ namespace Tyranno.Puzzle.Algorithms
         };
 
         /// <summary>
-        /// 1行または1列に5個以上のTrueのマスが存在する場合false、そうでなければtrueを返します。
+        /// 1行または1列に5個以上のtrueのマスが存在する場合false、そうでなければtrueを返します。
         /// </summary>
         public static readonly Func<bool[,], bool> IsTrueCountInRowOrColumnValid = originalStates =>
         {
@@ -542,6 +595,46 @@ namespace Tyranno.Puzzle.Algorithms
             }
 
             return true;
+        };
+
+        /// <summary>
+        /// 周囲の8マスがすべてfalseであるtrueのマスが1つ以上存在する場合true、そうでなければfalseを返します。
+        /// </summary>
+        public static readonly Func<bool[,], bool> IsSurroundedByFalse = originalStates =>
+        {
+            bool[,] states = ConvertAxis(originalStates);
+
+            for (int i = 0; i < states.GetLength(1); i++)
+            {
+                for (int j = 0; j < states.GetLength(0); j++)
+                {
+                    if (states[j, i] && AroundCount(states, j, i) == 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        };
+
+        /// <summary>
+        /// 縦または横に2つ以上繋がっているtrueマスが存在する場合true、そうでなければfalseを返します。
+        /// </summary>
+        public static readonly Func<bool[,], bool> IsHorizontallyOrVerticallyConnected = originalStates =>
+        {
+            bool[,] states = ConvertAxis(originalStates);
+
+            for (int i = 0; i < states.GetLength(1); i++)
+            {
+                for (int j = 0; j < states.GetLength(0); j++)
+                {
+                    if (states[j, i] && AroundCount4(states, j, i) >= 1)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         };
 
 

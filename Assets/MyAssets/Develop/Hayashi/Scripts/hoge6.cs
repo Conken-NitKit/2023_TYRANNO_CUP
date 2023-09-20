@@ -35,7 +35,7 @@ public class hoge6 : MonoBehaviour
     {
         ConditionProfiles.IsLeftToRightMaze,
         ConditionProfiles.IsUpperToBottomMaze,
-        ConditionProfiles.IsSingleColoredWall,
+        ConditionProfiles.IsDoubleColoredWall,
         ConditionProfiles.IsSymmetry, 
         ConditionProfiles.IsPointSymmetry,
         ConditionProfiles.IsVerticalSymmetry,
