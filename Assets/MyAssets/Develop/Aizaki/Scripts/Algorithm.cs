@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using static UnityEngine.UI.Image;
 
 namespace Tyranno.Puzzle.Algorithms
@@ -226,7 +227,7 @@ namespace Tyranno.Puzzle.Algorithms
         };
 
         /// <summary>
-        /// 図形が左右対称であることを判定します。
+        /// 図形が左右対称であるこか判定します。
         /// </summary>
         public static readonly Func<bool[,], bool> Symmetry = originalStates =>
         {
@@ -248,7 +249,30 @@ namespace Tyranno.Puzzle.Algorithms
         };
 
         /// <summary>
-        /// 図形が点対称であることを判定します。
+        /// 図形が上下対称であるかを判定します。
+        /// </summary>
+        public static readonly Func<bool[,], bool> VerticalSymmetry = originalStates =>
+        {
+            bool[,] states = ConvertAxis(originalStates);
+            bool[,] converted = new bool[states.GetLength(0), states.GetLength(1)];
+            for (int i = 0; i < states.GetLength(0); i++)
+            {
+                for (int j = 0; j < states.GetLength(1); j++)
+                {
+                    converted[i, j] = states[i, states.GetLength(1) - j - 1];
+                    if (converted[i, j] != states[i, j])
+                    {
+                        Debug.Log("false");
+                        return false;
+                    }
+                }
+            }
+            Debug.Log("true");
+            return true;
+        };
+
+        /// <summary>
+        /// 図形が点対称であるかを判定します。
         /// </summary>
         public static readonly Func<bool[,], bool> PointSymmetry = originalStates =>
         {
@@ -268,6 +292,30 @@ namespace Tyranno.Puzzle.Algorithms
             return true;
 
         };
+
+        /// <summary>
+        /// trueマスの個数が24以上の場合true、24未満の場合falseを返します。
+        /// </summary>
+        public static readonly Func<bool[,], bool> QuantityLimit = originalStates =>
+        {
+            var limit = 24;
+            return ConvertToLinear(originalStates).FindAll(x => x).Count >= limit;
+        };
+
+        /// <summary>
+        /// 二次元配列を一次元配列に変換します。
+        /// </summary>
+        /// <param name="original">変換元の二次元配列</param>
+        /// <returns>変換された配列</returns>
+        private static List<bool> ConvertToLinear(bool[,] original)
+        {
+            List<bool> converted = new();
+            foreach (var state in original)
+            {
+                converted.Add(state);
+            }
+            return converted;
+        }
 
         /// <summary>
         /// 入力された多次元配列のx,y軸を反転させます。
