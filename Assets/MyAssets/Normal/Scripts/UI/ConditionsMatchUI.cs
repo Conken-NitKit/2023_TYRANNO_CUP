@@ -5,8 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 using DG.Tweening;
+using Tyranno.GameManager;
 
-namespace Tyranno.GameManager.UI
+namespace Tyranno.UI
 {
     public class ConditionsMatchUI : MonoBehaviour
     {
