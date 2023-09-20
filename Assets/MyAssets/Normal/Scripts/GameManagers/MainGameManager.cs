@@ -101,7 +101,7 @@ namespace Tyranno.GameManager
 
         void Result()
         {
-            
+            Debug.Log("終わり！");
         }
     }
 }
