@@ -11,8 +11,6 @@ namespace Tyranno.Ui.Animations
         [SerializeField]
         private Image[] _curtains;
 
-        [SerializeField]
-        private AnimationCurve test;
         
         void Start()
         {
@@ -23,8 +21,8 @@ namespace Tyranno.Ui.Animations
         {
             foreach (var curtain in _curtains)
             {
-                curtain.DOFillAmount(0f, 2f).SetEase(Ease.OutSine);
-                curtain.DOFade(0f, 2f).SetEase(test);
+                curtain.DOFillAmount(0f, 1.5f).SetEase(Ease.OutSine);
+                curtain.DOFade(0f, 3f).SetEase(Ease.InCubic);
             }
         }
         
@@ -32,8 +30,8 @@ namespace Tyranno.Ui.Animations
         {
             foreach (var curtain in _curtains)
             {
-                curtain.DOFillAmount(1f, 2f).SetEase(Ease.OutSine);
-                curtain.DOFade(1f, 2f).SetEase(test);
+                curtain.DOFillAmount(1f, 1.5f).SetEase(Ease.OutSine);
+                curtain.DOFade(1f, 3f).SetEase(Ease.InCubic);
             }
         }
     }

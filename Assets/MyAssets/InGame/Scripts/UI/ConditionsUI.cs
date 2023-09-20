@@ -29,7 +29,7 @@ namespace Tyranno.UI
         {
             for (int i = 0; i < _puzzleManager.ConditionNum; i++)
             {
-                _description += $"{_conditionsDescription.DescriptionTexts[_puzzleManager.ConditionsOrder[i]]}\n\n";
+                _description += $"\n{_conditionsDescription.DescriptionTexts[_puzzleManager.ConditionsOrder[i]]}\n";
             }
 
             _descriptionText.text = _description;
@@ -51,11 +51,11 @@ namespace Tyranno.UI
                 Debug.Log(_puzzleManager.JudgmentConditions[i]);
                 if (!_puzzleManager.JudgmentConditions[i])
                 {
-                    _description += $"<color=#000000>{_conditionsDescription.DescriptionTexts[_puzzleManager.ConditionsOrder[i]]}</color>\n\n";
+                    _description += $"\n<color=#000000>{_conditionsDescription.DescriptionTexts[_puzzleManager.ConditionsOrder[i]]}</color>\n";
                 }
                 else
                 {
-                    _description += $"<color=#4db56a>{_conditionsDescription.DescriptionTexts[_puzzleManager.ConditionsOrder[i]]}</color>\n\n";
+                    _description += $"\n<color=#4db56a>{_conditionsDescription.DescriptionTexts[_puzzleManager.ConditionsOrder[i]]}</color>\n";
                 }
             }
 
