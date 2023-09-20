@@ -4,7 +4,7 @@ using Tyranno.Puzzle;
 using UniRx;
 using UnityEngine;
 
-public class hoge4 : MonoBehaviour
+public class hoge4copy : MonoBehaviour
 {
     [SerializeField]
     private PuzzleState _puzzleState;
@@ -37,5 +37,6 @@ public class hoge4 : MonoBehaviour
             hoge += "}\n";
         }
         Debug.Log(hoge);
+        Debug.Log($"{Tyranno.Puzzle.Algorithms.ConditionProfiles.LeftToRightMaze(_puzzleState.SquareArray)},{Tyranno.Puzzle.Algorithms.ConditionProfiles.UpperToBottomMaze(_puzzleState.SquareArray)},{Tyranno.Puzzle.Algorithms.ConditionProfiles.SingleColoredWall(_puzzleState.SquareArray)},{Tyranno.Puzzle.Algorithms.ConditionProfiles.Symmetry(_puzzleState.SquareArray)},{Tyranno.Puzzle.Algorithms.ConditionProfiles.PointSymmetry(_puzzleState.SquareArray)},{Tyranno.Puzzle.Algorithms.ConditionProfiles.VerticalSymmetry(_puzzleState.SquareArray)},{Tyranno.Puzzle.Algorithms.ConditionProfiles.QuantityLimit(_puzzleState.SquareArray)},{Tyranno.Puzzle.Algorithms.ConditionProfiles.ConnectionSizeLimit(_puzzleState.SquareArray)}");
     }
 }

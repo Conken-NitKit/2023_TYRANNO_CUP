@@ -303,6 +303,99 @@ namespace Tyranno.Puzzle.Algorithms
         };
 
         /// <summary>
+        /// trueマスが4つ以上固まっているとfalse、そうでなければtrueを返します。
+        /// 斜めのつながりは固まっていると判定しません。
+        /// </summary>
+        public static readonly Func<bool[,], bool> ConnectionSizeLimit = originalStates =>
+        {
+            bool[,] states = ConvertAxis(originalStates);
+            HashSet<(int x, int y)> foundStates = new();
+            int limit = 4;
+
+            for (int i = 0; i < states.GetLength(1); i++)
+            {
+                for (int j = 0; j < states.GetLength(0); j++)
+                {
+                    foreach (var (x, y) in foundStates)
+                    {
+                        states[x, y] = false;
+                    }
+
+                    foundStates = new();
+
+                    if (!states[j, i])
+                    {
+                        continue;
+                    }
+
+                    bool[,] statesClone = states;
+                    Stack<((int x, int y) location, int count, bool[,] statesLog)> branchStacks = new();
+                    (int x, int y) currentLocation = (j, i);
+                    (int x, int y) lastBranchLocation = (0, 0);
+                    foundStates.Add(currentLocation);
+
+                    for (int k = 0; k <= states.Length + 1; j++)
+                    {
+
+                        int aroundCount = AroundCount4(statesClone, currentLocation.x, currentLocation.y);
+                        if (aroundCount == 0)
+                        {
+                            if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) branchOut))
+                            {
+                                currentLocation = branchOut.location;
+                                statesClone = branchOut.statesLog;
+                                statesClone[lastBranchLocation.x, lastBranchLocation.y] = false;
+                                branchStacks.Pop();
+                                continue;
+                            }
+                            else
+                            {
+                                break;
+                            }
+
+                        }
+                        else if (aroundCount == 1)
+                        {
+                            statesClone[currentLocation.x, currentLocation.y] = false;
+                            currentLocation = GetBranchByCount4(statesClone, currentLocation.x, currentLocation.y, 0);
+                            foundStates.Add(currentLocation);
+                            if (foundStates.Count >= limit)
+                            {
+                                //Debug.Log(foundStates.Select(x => $"{x.x},{x.y}").Aggregate((x, y) => $"{x},{y}"));
+                                return false;
+                            }
+                        }
+                        else if (aroundCount >= 2)
+                        {
+                            statesClone[currentLocation.x, currentLocation.y] = false;
+                            if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) branchOut))
+                            {
+                                int countTmp = branchOut.location == currentLocation ? branchOut.count + 1 : 0;
+                                branchStacks.Push((currentLocation, countTmp, statesClone));
+                                (int x, int y) branchloc = GetBranchByCount4(statesClone, currentLocation.x, currentLocation.y, countTmp);
+                                currentLocation = branchloc;
+                                lastBranchLocation = branchloc;
+
+                                foundStates.Add(currentLocation);
+                                if (foundStates.Count >= limit)
+                                {
+                                    //Debug.Log(foundStates.Select(x => $"{x.x},{x.y}").Aggregate((x, y) => $"{x},{y}"));
+                                    return false;
+                                }
+                            }
+                            else
+                            {
+                                branchStacks.Push((currentLocation, 0, statesClone));
+                            }
+
+                        }
+                    }
+                }
+            }
+            return true;
+        };
+
+        /// <summary>
         /// 二次元配列を一次元配列に変換します。
         /// </summary>
         /// <param name="original">変換元の二次元配列</param>
@@ -382,6 +475,36 @@ namespace Tyranno.Puzzle.Algorithms
         }
 
         /// <summary>
+        /// 指定した座標の上下左右のマス(最大4)を返します。
+        /// </summary>
+        /// <param name="states">盤面の状態</param>
+        /// <param name="x">x座標</param>
+        /// <param name="y">y座標</param>
+        /// <returns>座標の値と位置をセットにしたタプル</returns>
+        private static List<(bool, (int x, int y))> Around4(bool[,] states, int x, int y)
+        {
+            List<(bool, (int x, int y))> values = new();
+            
+            if (x - 1 >= 0)
+            {
+                values.Add((states[x - 1, y], (x - 1, y)));
+            }
+            if (x + 1 < states.GetLength(0))
+            {
+                values.Add((states[x + 1, y], (x + 1, y)));
+            }
+            if (y - 1 >= 0)
+            {
+                values.Add((states[x, y - 1], (x, y - 1)));
+            }
+            if (y + 1 < states.GetLength(1))
+            {
+                values.Add((states[x, y + 1], (x, y + 1)));
+            }
+            return values;
+        }
+
+        /// <summary>
         /// 指定した座標の周囲のマスのうち、trueのマスの数を返します。
         /// </summary>
         /// <param name="states">盤面の状態</param>
@@ -427,6 +550,36 @@ namespace Tyranno.Puzzle.Algorithms
         }
 
         /// <summary>
+        /// 指定した座標の上下左右のマスのうち、trueのマスの数を返します。
+        /// </summary>
+        /// <param name="states">盤面の状態</param>
+        /// <param name="x">x座標</param>
+        /// <param name="y">y座標</param>
+        /// <returns>周囲のtrueのマスの数</returns>
+        private static int AroundCount4(bool[,] states, int x, int y)
+        {
+            int count = 0;
+            
+            if (x - 1 >= 0 && states[x - 1, y])
+            {
+                count++;
+            }
+            if (x + 1 < states.GetLength(0) && states[x + 1, y])
+            {
+                count++;
+            }
+            if (y - 1 >= 0 && states[x, y - 1])
+            {
+                count++;
+            }
+            if (y + 1 < states.GetLength(1) && states[x, y + 1])
+            {
+                count++;
+            }
+            return count;
+        }
+
+        /// <summary>
         /// 指定した座標の周囲のtrueマスのうち、index番目のものの座標を返します。
         /// </summary>
         /// <param name="states">盤面の状態</param>
@@ -438,8 +591,25 @@ namespace Tyranno.Puzzle.Algorithms
         private static (int x, int y) GetBranchByCount(bool[,] states, int x, int y, int index)
         {
             List<(bool, (int x, int y))> around = Around(states, x, y);
-            if (index + 1 > around.Count || index < 0) throw new ArgumentException("存在するブランチの数に対応しないインデックスを指定しています");
             around.RemoveAll(x => !x.Item1);
+            if (index + 1 > around.Count || index < 0) throw new ArgumentException("存在するブランチの数に対応しないインデックスを指定しています");
+            return around[index].Item2;
+        }
+
+        /// <summary>
+        /// 指定した座標の上下左右のtrueマスのうち、index番目のものの座標を返します。
+        /// </summary>
+        /// <param name="states">盤面の状態</param>
+        /// <param name="x">x座標</param>
+        /// <param name="y">y座標</param>
+        /// <param name="index">取得する番号</param>
+        /// <returns>index番目のtrueのマスの座標</returns>
+        /// <exception cref="ArgumentException"></exception>
+        private static (int x, int y) GetBranchByCount4(bool[,] states, int x, int y, int index)
+        {
+            List<(bool, (int x, int y))> around = Around4(states, x, y);
+            around.RemoveAll(x => !x.Item1);
+            if (index + 1 > around.Count || index < 0) throw new ArgumentException("存在するブランチの数に対応しないインデックスを指定しています");
             return around[index].Item2;
         }
 

@@ -2610,7 +2610,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 516718422}
-        m_TargetAssemblyTypeName: hoge4, Assembly-CSharp
+        m_TargetAssemblyTypeName: hoge4copy, Assembly-CSharp
         m_MethodName: Clicked
         m_Mode: 1
         m_Arguments:
@@ -2668,7 +2668,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 516718416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ebc6c86d1c2146118673f7e195910af, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fa80159e652e7243bd13db8ec45bb9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _puzzleState: {fileID: 2027288385}
