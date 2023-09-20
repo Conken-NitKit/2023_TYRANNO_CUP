@@ -7,21 +7,20 @@ using UnityEngine.UI;
 
 namespace Tyranno.Ui.Animations
 {
-    public class FadeBallAnimation : MonoBehaviour
+    public class StampAnimation : MonoBehaviour
     {
         [SerializeField]
         private UnityEvent _completeMethod;
 
         [SerializeField]
-        private Image _ball;
+        private Image _stamp;
 
-        public void CloseAnimation()
+        public void PushStamp()
         {
             var sequence = DOTween.Sequence();
 
-            sequence.Append(_ball.rectTransform.DOLocalMove(new Vector2(0, 0), 1f).SetEase(Ease.OutCubic));
-            sequence.Join(_ball.rectTransform.DOScale(new Vector2(0, 0), 1f).SetEase(Ease.InCubic));
-            sequence.Append(_ball.rectTransform.DOScale(new Vector2(50, 50), 1f));
+            sequence.Append(_stamp.DOFade(1f, 0.5f).SetEase(Ease.InQuint));
+            sequence.Join(_stamp.rectTransform.DOScale(new Vector2(1, 1), 0.5f).SetEase(Ease.InQuint));
             if(_completeMethod != null)sequence.AppendCallback(_completeMethod.Invoke);
 
             sequence.Play();
