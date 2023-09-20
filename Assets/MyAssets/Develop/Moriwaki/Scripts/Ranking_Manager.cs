@@ -3,26 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
-using System;
+//using System;
 using UnityEngine.UI;
-using System.Text;
+//using System.Text;
 
 public class Ranking_Manager : MonoBehaviour
 {
     public InputField inputFieldName;
     public InputField inputFieldScore;
 
-
     public void OnClick()
     {
-        StartCoroutine(UpdateRanking(inputFieldName.text, int.Parse(inputFieldScore.text)));
+        UpdateRanking(inputFieldName.text, int.Parse(inputFieldScore.text));
     }
 
-    public IEnumerator UpdateRanking(string userName, int score)
+    public void UpdateRanking(string userName, int score)
     {
+        //GameUtility gameUtility = new GameUtility();
+
         var request = new LoginWithCustomIDRequest
         {
-            CustomId = GameUtility.GenerateCustomID(),
+            CustomId = CreateNewPlayerId(),
             CreateAccount = true
         };
 
@@ -44,26 +45,35 @@ public class Ranking_Manager : MonoBehaviour
             
                         // アカウント作成完了
                     Debug.Log("Create Account Success!!");
+
+                    SetUserName(userName, score);
                 },
                 (error) =>
                 {
                     Debug.LogError("Create Account Failed...");
                     Debug.LogError(error.GenerateErrorReport());
                 });
+    }
 
-        yield return new WaitForSeconds(1f);
-        
+    public void SetUserName(string userName, int score)
+    {
         PlayFabClientAPI.UpdateUserTitleDisplayName(
-            new UpdateUserTitleDisplayNameRequest { DisplayName = userName},
+            new UpdateUserTitleDisplayNameRequest { DisplayName = userName },
             (result) =>
             {
                 Debug.Log("Save Display Name Success!!");
+
+                SendUserScore(score);
             },
             (error) =>
             {
                 Debug.LogError("Save Display Name Failed...");
                 Debug.LogError(error.GenerateErrorReport());
             });
+    }
+
+    public void SendUserScore(int score)
+    {
         PlayFabClientAPI.UpdatePlayerStatistics(new UpdatePlayerStatisticsRequest
             {
                 Statistics = new List<StatisticUpdate>
@@ -71,7 +81,7 @@ public class Ranking_Manager : MonoBehaviour
                     new StatisticUpdate
                     {
                         StatisticName = "TimeAttack",
-                        Value = score // スコア
+                        Value = score * -1 // スコア
                     }
                 }
             },
@@ -79,6 +89,8 @@ public class Ranking_Manager : MonoBehaviour
             {
                 // スコア送信完了
                 Debug.Log("Send Ranking Score Success!!");
+
+                GetLeaderboard();
             },
             (error) =>
             {
@@ -87,29 +99,47 @@ public class Ranking_Manager : MonoBehaviour
             });
     }
 
+    public void GetLeaderboard()
+    {
+        PlayFabClientAPI.GetLeaderboard(new GetLeaderboardRequest
+        {
+            StatisticName = "TimeAttack"
+        }, result =>
+        {
+            foreach (var item in result.Leaderboard)
+            {
+                Debug.Log($"{item.Position + 1}位:{item.DisplayName} " + $"スコア {item.StatValue * -1}");
+                if(item.Position >= 10)
+                {
+                    break;
+                }
+            }
+        }, error =>
+        {
+            Debug.Log(error.GenerateErrorReport());
+        });
+    }
+
     private string CreateNewPlayerId()
     {
-        return Guid.NewGuid().ToString("N");
+        return System.Guid.NewGuid().ToString("N");
     }
 
-    public class GameUtility
+    /*
+    private static readonly string ID_CHARACTERS = "0123456789abcdefghijklmnopqrstuvwxyz";
+    //IDを生成する
+    public string GenerateCustomID()
     {
-        private static readonly string ID_CHARACTERS = "0123456789abcdefghijklmnopqrstuvwxyz";
-
-        //IDを生成する
-        static public string GenerateCustomID()
+        int idLength = 32;
+        StringBuilder stringBuilder = new StringBuilder(idLength);
+        var random = new System.Random();
+        //ランダムにIDを生成
+        for (int i = 0; i < idLength; i++)
         {
-            int idLength = 32;
-            StringBuilder stringBuilder = new StringBuilder(idLength);
-            var random = new System.Random();
-
-            //ランダムにIDを生成
-            for (int i = 0; i < idLength; i++)
-            {
-                stringBuilder.Append(ID_CHARACTERS[random.Next(ID_CHARACTERS.Length)]);
-            }
-
-            return stringBuilder.ToString();
+            stringBuilder.Append(ID_CHARACTERS[random.Next(ID_CHARACTERS.Length)]);
         }
+        return stringBuilder.ToString();
     }
+    */
 }
+
