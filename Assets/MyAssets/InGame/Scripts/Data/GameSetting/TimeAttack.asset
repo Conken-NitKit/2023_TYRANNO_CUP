@@ -15,4 +15,6 @@ MonoBehaviour:
   WaveNum: 5
   StartConditionsNum: 5
   MaxConditionsNum: 10
-  isTimeAttack: 0
+  IsTimeAttack: 1
+  Score: 100
+  Comment: "\u306F\u3084\u3059\u304E"

@@ -8,5 +8,7 @@ public class GameSetting : ScriptableObject
     public int WaveNum;
     public int StartConditionsNum;
     public int MaxConditionsNum;
-    public bool isTimeAttack;
+    public bool IsTimeAttack;
+    public int Score;
+    public string Comment;
 }

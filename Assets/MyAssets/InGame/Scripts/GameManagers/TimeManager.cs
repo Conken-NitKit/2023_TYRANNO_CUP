@@ -24,7 +24,7 @@ namespace Tyranno.GameManager
         public IReadOnlyReactiveProperty<int> ReadySecond => _readySecond;
 
         /// <summary>
-        /// ゲームの残り時間
+        /// ゲームの経過時間
         /// </summary>
         public IReadOnlyReactiveProperty<int> GameSecond => _gameSecond;
 
@@ -78,6 +78,7 @@ namespace Tyranno.GameManager
         {
             while (_playTimeAttack)
             {
+                Debug.Log("hoge");
                 yield return new WaitForSeconds(1);
                 _gameSecond.Value++;
             }

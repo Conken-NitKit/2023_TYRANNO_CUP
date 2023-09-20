@@ -41,7 +41,6 @@ namespace Tyranno.GameManager
 
         void OnStateChanged(GameState nextState)
         {
-            Debug.Log(nextState);
             switch (nextState)
             {
                 case GameState.Init:
@@ -78,7 +77,7 @@ namespace Tyranno.GameManager
         {
             _timeManager.ReadySecond
                 .FirstOrDefault(x => x >= 0)
-                .Delay(TimeSpan.FromSeconds(1))
+                .Delay(TimeSpan.FromSeconds(4))
                 .Subscribe(_ => _currentState.Value = GameState.Game)
                 .AddTo(gameObject);
             
@@ -87,7 +86,7 @@ namespace Tyranno.GameManager
 
         void MainGame()
         {
-            if (_gameSetting.isTimeAttack)
+            if (_gameSetting.IsTimeAttack)
             {
                 _timeManager.StartGameCountUp();
             }
@@ -101,7 +100,10 @@ namespace Tyranno.GameManager
 
         void Result()
         {
-            Debug.Log("終わり！");
+            if (_gameSetting.IsTimeAttack)
+            {
+                _timeManager.StopTimeCountUp();
+            }
         }
     }
 }
