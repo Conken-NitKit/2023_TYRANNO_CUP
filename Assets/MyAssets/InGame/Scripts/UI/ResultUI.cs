@@ -35,7 +35,7 @@ namespace Tyranno.UI
                 _inputTimeAttack.SetActive(true);
                 _timeManager.GameSecond.Subscribe(x =>
                 {
-                    _score.text = $"{x}";
+                    _score.text = $"{x / 60:00}:{x % 60:00}";
                 });
 
                 _scoreType.text = "あなたのタイムは";
