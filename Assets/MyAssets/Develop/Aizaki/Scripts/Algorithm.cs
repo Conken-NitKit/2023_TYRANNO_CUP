@@ -653,7 +653,124 @@ namespace Tyranno.Puzzle.Algorithms
             return false;
         };
 
+        /// <summary>
+        /// 配置が4回対称(90度回転させたときに重なる)であればfalse、そうでなければfalseを返します。
+        /// </summary>
+        public static readonly Func<bool[,], bool> IsNot4FoldSymmetry = originalStates =>
+        {
+            bool[,] states = ConvertAxis(originalStates);
+            bool[,] converted = new bool[states.GetLength(1), states.GetLength(0)];
+            for (int i = 0; i < converted.GetLength(0); i++)
+            {
+                for (int j = 0; j < converted.GetLength(1); j++)
+                {
+                    converted[converted.GetLength(0) - i - 1, j] = states[j, i];
+                    if (converted[converted.GetLength(0) - i - 1, j] != states[converted.GetLength(0) - i - 1, j])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        };
 
+        /// <summary>
+        /// falseマスが9個以上に分割されているとfalse、そうでなければtrueを返します。
+        /// </summary>
+        public static readonly Func<bool[,], bool> IsFalseDivisionsCountLimit = originalStates =>
+        {
+            int limit = 9;
+            int count = 0;
+
+            bool[,] states = ConvertAxis(originalStates);
+            for (int i = 0; i < states.GetLength(1); i++)
+            {
+                for (int j = 0; j < states.GetLength(0); j++)
+                {
+                    states[j, i] = !states[j, i];
+                }
+            }
+
+            HashSet<(int x, int y)> foundStates = new();
+
+
+            for (int i = 0; i < states.GetLength(1); i++)
+            {
+                for (int j = 0; j < states.GetLength(0); j++)
+                {
+                    foreach ((int x, int y) in foundStates)
+                    {
+                        states[x, y] = false;
+                    }
+
+                    foundStates = new();
+
+                    if (!states[j, i])
+                    {
+                        continue;
+                    }
+
+                    count++;
+                    if (count >= limit)
+                    {
+                        return false;
+                    }
+
+                    Stack<((int x, int y) location, int count, bool[,] statesLog)> branchStacks = new();
+                    (int x, int y) currentLocation = (j, i);
+                    (int x, int y) lastBranchLocation = (0, 0);
+                    foundStates.Add(currentLocation);
+
+                    for (int k = 0; k <= states.Length + 1; j++)
+                    {
+
+                        int aroundCount = AroundCount4(states, currentLocation.x, currentLocation.y);
+                        if (aroundCount == 0)
+                        {
+                            if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) branchOut))
+                            {
+                                currentLocation = branchOut.location;
+                                states = branchOut.statesLog;
+                                states[lastBranchLocation.x, lastBranchLocation.y] = false;
+                                branchStacks.Pop();
+                                continue;
+                            }
+                            else
+                            {
+                                break;
+                            }
+
+                        }
+                        else if (aroundCount == 1)
+                        {
+                            states[currentLocation.x, currentLocation.y] = false;
+                            currentLocation = GetBranchByCount4(states, currentLocation.x, currentLocation.y, 0);
+                            foundStates.Add(currentLocation);
+                        }
+                        else if (aroundCount >= 2)
+                        {
+                            states[currentLocation.x, currentLocation.y] = false;
+                            if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) branchOut))
+                            {
+                                int countTmp = branchOut.location == currentLocation ? branchOut.count + 1 : 0;
+                                branchStacks.Push((currentLocation, countTmp, states));
+                                (int x, int y) branchloc = GetBranchByCount4(states, currentLocation.x, currentLocation.y, countTmp);
+                                currentLocation = branchloc;
+                                lastBranchLocation = branchloc;
+
+                                foundStates.Add(currentLocation);
+                            }
+                            else
+                            {
+                                branchStacks.Push((currentLocation, 0, states));
+                            }
+
+                        }
+                    }
+                }
+            }
+            return true;
+        };
 
 
 
