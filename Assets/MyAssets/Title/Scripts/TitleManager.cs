@@ -6,6 +6,7 @@ using DG.Tweening;
 using UnityEngine.UIElements;
 using Unity.VisualScripting;
 using System;
+using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
@@ -27,12 +28,24 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Button hardButton;
     [SerializeField] private UnityEngine.UI.Button hardcoreButton;
     [SerializeField] private UnityEngine.UI.Image transitionImage;
+    [SerializeField] private UnityEngine.UI.Image transitionImageR;
+    [SerializeField] private UnityEngine.UI.Image transitionImageG;
+    [SerializeField] private UnityEngine.UI.Image transitionImageB;
+
+    private static int transitionCount = 0;
+
 
     private SEManager seManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (transitionCount != 0)
+        {
+            TransitionBack();
+        }
+        transitionCount++;
+        
         seManager = Camera.main.GetComponent<SEManager>();
         rayCastBlocker.SetActive(false);
 
@@ -89,21 +102,24 @@ public class TitleManager : MonoBehaviour
 
     public void OnChallengeModeClick()
     {
-        seManager.PlayEnter1();
-        //‚±‚±‚Éƒ`ƒƒƒŒƒ“ƒWƒ‚[ƒhƒV[ƒ““]ˆÚˆ—‚ð‘‚­
+        seManager.PlayEnter2();
+        Transition(() => Debug.Log("ƒ`ƒƒƒŒƒ“ƒWƒ‚[ƒh‚É“]ˆÚ"));
     }
 
     public void OnRankingClick()
     {
         seManager.PlayEnter1();
-        //‚±‚±‚Éƒ‰ƒ“ƒLƒ“ƒOƒV[ƒ““]ˆÚˆ—‚ð‘‚­
+        Transition(() => Debug.Log("ƒ‰ƒ“ƒLƒ“ƒO‚É“]ˆÚ"));
     }
-
-    DG.Tweening.Sequence crazySequence = DOTween.Sequence();
+    
 
     public void OnDocterClick()
     {
         doctor.interactable = false;
+
+        doctor.gameObject.transform.DORotate(new Vector3(0, 0, 359), 0.1f, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental);
+
+        Camera.main.GetComponent<AudioSource>().pitch = 1.2f;
 
         DG.Tweening.Sequence crazySequence = DOTween.Sequence();
 
@@ -130,35 +146,64 @@ public class TitleManager : MonoBehaviour
     public void OnEasyClick()
     {
         seManager.PlayEnter2();
-        //‚±‚±‚Éeasy‚Ìˆ—‚ð‘‚­
+        Transition(() => Debug.Log("Easy‚É“]ˆÚ"));
     }
 
     public void OnNormalClick()
     {
         seManager.PlayEnter2();
-        //‚±‚±‚Énormal‚Ìˆ—‚ð‘‚­
+        Transition(() => Debug.Log("Normal‚É“]ˆÚ"));
     }
 
     public void OnHardClick()
     {
         seManager.PlayEnter2();
-        //‚±‚±‚Éhard‚Ìˆ—‚ð‘‚­
+        Transition(() => Debug.Log("Hard‚É“]ˆÚ"));
     }
 
     public void OnHardcoreClick()
     {
         Camera.main.GetComponent<AudioSource>().pitch = 0.8f;
         //seManager.PlayBell();
-        //‚±‚±‚Éhardcore‚Ìˆ—‚ð‘‚­
-        Transition(()=>Debug.Log("“]ˆÚ"));
+        Transition(()=>Debug.Log("Hardcore‚É“]ˆÚ"));
     }
 
     private void Transition(Action action)
     {
-        rayCastBlocker.SetActive(true); 
+        rayCastBlocker.SetActive(true);
+
+        transitionImage.fillAmount = 0f;
+        transitionImageR.fillAmount = 0f;
+        transitionImageG.fillAmount = 0f;
+        transitionImageB.fillAmount = 0f;
+        Camera.main.GetComponent<AudioSource>().volume = 1f;
+
         var sequence = DOTween.Sequence();
-        sequence.Append(transitionImage.DOFillAmount(1, 0.5f));
-        sequence.AppendInterval(3f);
+        sequence.Append(transitionImageR.DOFillAmount(1, 0.45f).SetEase(Ease.OutCubic));
+        sequence.Join(transitionImageG.DOFillAmount(1, 0.5f).SetEase(Ease.OutSine));
+        sequence.Join(transitionImageB.DOFillAmount(1, 0.55f).SetEase(Ease.InSine));
+        sequence.Join(transitionImage.DOFillAmount(1, 0.6f).SetEase(Ease.InCubic));
+        sequence.Join(Camera.main.GetComponent<AudioSource>().DOFade(0f, 3f));
         sequence.Play().OnComplete(() => action());
+    }
+
+    private void TransitionBack()
+    {
+        rayCastBlocker.SetActive(false);
+        
+        transitionImage.fillAmount = 1f;
+        transitionImageR.fillAmount = 1f;
+        transitionImageG.fillAmount = 1f;
+        transitionImageB.fillAmount = 1f;
+        Camera.main.GetComponent<AudioSource>().volume = 0f;
+
+        var sequence = DOTween.Sequence();
+        sequence.Append(transitionImage.DOFillAmount(0, 0.45f).SetEase(Ease.OutCubic));
+        sequence.Join(transitionImageB.DOFillAmount(0, 0.5f).SetEase(Ease.OutSine));
+        sequence.Join(transitionImageG.DOFillAmount(0, 0.55f).SetEase(Ease.InSine));
+        sequence.Join(transitionImageR.DOFillAmount(0, 0.6f).SetEase(Ease.InCubic));
+        sequence.Join(Camera.main.GetComponent<AudioSource>().DOFade(1f, 2f));
+
+        sequence.Play();
     }
 }
