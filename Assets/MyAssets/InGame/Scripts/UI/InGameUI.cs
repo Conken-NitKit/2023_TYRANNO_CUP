@@ -17,6 +17,11 @@ namespace Tyranno.UI
 
         [SerializeField] 
         private GameSetting _gameSetting;
+        
+        [SerializeField]private PuzzleManager _puzzleManager;
+
+        [SerializeField]
+        private Text _text;
 
         void Start()
         {
@@ -28,6 +33,11 @@ namespace Tyranno.UI
                     _countSeconds.text = $"{x / 60:00} : {x % 60:00}";
                 });
             }
+
+            _puzzleManager.CurrentWaveNum.Subscribe(x =>
+            {
+                _text.text = $"{x} / {_gameSetting.WaveNum}";
+            });
         }
     }
 }
