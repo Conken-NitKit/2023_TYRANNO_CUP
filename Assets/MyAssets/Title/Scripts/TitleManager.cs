@@ -166,7 +166,7 @@ public class TitleManager : MonoBehaviour
     {
         Camera.main.GetComponent<AudioSource>().pitch = 0.8f;
         //seManager.PlayBell();
-        Transition(()=>Debug.Log("Hardcore‚É“]ˆÚ"));
+        Transition(() => Debug.Log("Hardcore‚É“]ˆÚ"));
     }
 
     private void Transition(Action action)
