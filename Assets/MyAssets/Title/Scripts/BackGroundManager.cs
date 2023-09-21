@@ -14,7 +14,8 @@ public class BackGroundManager : MonoBehaviour
     void Start()
     {
         image.material.mainTextureOffset = new Vector2(0, 0);
-        image.material.DOOffset(new Vector2(x, y), 10f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental);
+        image.material.DOKill();
+        image.material.DOOffset(new Vector2(x, y), 10f).SetEase(Ease.Linear).SetLoops(int.MaxValue, LoopType.Incremental);
     }
 
     // Update is called once per frame

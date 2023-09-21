@@ -31,6 +31,7 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Image transitionImageR;
     [SerializeField] private UnityEngine.UI.Image transitionImageG;
     [SerializeField] private UnityEngine.UI.Image transitionImageB;
+    [SerializeField] private UnityEngine.UI.Image backGround;
 
     private static int transitionCount = 0;
 
@@ -184,7 +185,10 @@ public class TitleManager : MonoBehaviour
         sequence.Join(transitionImageB.DOFillAmount(1, 0.55f).SetEase(Ease.InSine));
         sequence.Join(transitionImage.DOFillAmount(1, 0.6f).SetEase(Ease.InCubic));
         sequence.Join(Camera.main.GetComponent<AudioSource>().DOFade(0f, 3f));
-        sequence.Play().OnComplete(() => action());
+        sequence.Play().OnComplete(() => {
+            backGround.material.DOKill();
+            action();
+        });
     }
 
     private void TransitionBack()

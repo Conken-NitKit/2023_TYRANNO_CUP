@@ -2721,6 +2721,7 @@ MonoBehaviour:
   transitionImageR: {fileID: 1916216882}
   transitionImageG: {fileID: 961244845}
   transitionImageB: {fileID: 1345287734}
+  backGround: {fileID: 200111249}
 --- !u!1 &1169328741
 GameObject:
   m_ObjectHideFlags: 0
