@@ -6524,6 +6524,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 952976288}
+        m_TargetAssemblyTypeName: Tyranno.GameManager.RankingSender, Assembly-CSharp
+        m_MethodName: OnClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &708953462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8913,6 +8925,8 @@ GameObject:
   - component: {fileID: 952976287}
   - component: {fileID: 952976286}
   - component: {fileID: 952976285}
+  - component: {fileID: 952976289}
+  - component: {fileID: 952976288}
   m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
@@ -9049,6 +9063,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 952976283}
   m_CullTransparentMesh: 1
+--- !u!114 &952976288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952976283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca59c996608764c748121e418cfd51ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeManager: {fileID: 2117875262}
+  _rankingManager: {fileID: 952976289}
+  _inputFieldName: {fileID: 952976285}
+--- !u!114 &952976289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952976283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b82da5f01aae0b42a0d9aaf41de60fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputFieldName: {fileID: 0}
+  inputFieldScore: {fileID: 0}
 --- !u!1 &964798115
 GameObject:
   m_ObjectHideFlags: 0
@@ -18706,7 +18749,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _gameSetting: {fileID: 11400000, guid: a4b726a1c84e94285a1d68d7b224f5d0, type: 2}
+  _gameSetting: {fileID: 11400000, guid: f6ee444793e2f45db8e82238863ffa1c, type: 2}
 --- !u!114 &2117875262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18737,7 +18780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _puzzleState: {fileID: 2117875256}
-  _gameSetting: {fileID: 11400000, guid: a4b726a1c84e94285a1d68d7b224f5d0, type: 2}
+  _gameSetting: {fileID: 11400000, guid: f6ee444793e2f45db8e82238863ffa1c, type: 2}
 --- !u!114 &2117875266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18751,7 +18794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _puzzleManager: {fileID: 2117875265}
-  _gameSetting: {fileID: 11400000, guid: a4b726a1c84e94285a1d68d7b224f5d0, type: 2}
+  _gameSetting: {fileID: 11400000, guid: f6ee444793e2f45db8e82238863ffa1c, type: 2}
   _conditionsDescription: {fileID: 11400000, guid: adfd2b71fa96b4cc59f535e86cd463e2, type: 2}
   _descriptionText: {fileID: 85564241}
 --- !u!114 &2117875267
@@ -18851,7 +18894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f08a2e1dcbca41be9ff5b2b4a852cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameSetting: {fileID: 11400000, guid: a4b726a1c84e94285a1d68d7b224f5d0, type: 2}
+  _gameSetting: {fileID: 11400000, guid: f6ee444793e2f45db8e82238863ffa1c, type: 2}
   _timeManager: {fileID: 2117875262}
   _inputTimeAttack: {fileID: 952976283}
   _teacherComment: {fileID: 1762194126}
@@ -18871,7 +18914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeManager: {fileID: 2117875262}
   _countSeconds: {fileID: 541706882}
-  _gameSetting: {fileID: 11400000, guid: a4b726a1c84e94285a1d68d7b224f5d0, type: 2}
+  _gameSetting: {fileID: 11400000, guid: f6ee444793e2f45db8e82238863ffa1c, type: 2}
   _puzzleManager: {fileID: 2117875265}
   _text: {fileID: 50062736}
 --- !u!82 &2117875274
