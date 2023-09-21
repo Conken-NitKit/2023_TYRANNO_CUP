@@ -22,7 +22,9 @@ namespace Tyranno.Puzzle.Algorithms
             IsTrueCountInRowOrColumnValid,
             IsTrueConnectionSizeVaild,
             IsSurroundedByFalse,
-            IsHorizontallyOrVerticallyConnected
+            IsHorizontallyOrVerticallyConnected,
+            IsNot4FoldSymmetry,
+            IsFalseDivisionsCountLimit
         };
 
         /// <summary>
