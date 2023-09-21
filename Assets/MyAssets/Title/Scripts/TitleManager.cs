@@ -102,15 +102,14 @@ public class TitleManager : MonoBehaviour
 
     public void OnChallengeModeClick()
     {
-        seManager.PlayEnter1();
-        SceneManager.LoadScene("Aizaki");
-        //‚±‚±‚Éƒ`ƒƒƒŒƒ“ƒWƒ‚[ƒhƒV[ƒ““]ˆÚˆ—‚ð‘‚­
+        seManager.PlayEnter2();
+        Transition(() => Debug.Log("ƒ`ƒƒƒŒƒ“ƒWƒ‚[ƒh‚É“]ˆÚ"));
     }
 
     public void OnRankingClick()
     {
         seManager.PlayEnter1();
-        //‚±‚±‚Éƒ‰ƒ“ƒLƒ“ƒOƒV[ƒ““]ˆÚˆ—‚ð‘‚­
+        Transition(() => Debug.Log("ƒ‰ƒ“ƒLƒ“ƒO‚É“]ˆÚ"));
     }
     
 
@@ -147,27 +146,26 @@ public class TitleManager : MonoBehaviour
     public void OnEasyClick()
     {
         seManager.PlayEnter2();
-        //‚±‚±‚Éeasy‚Ìˆ—‚ð‘‚­
+        Transition(() => Debug.Log("Easy‚É“]ˆÚ"));
     }
 
     public void OnNormalClick()
     {
         seManager.PlayEnter2();
-        //‚±‚±‚Énormal‚Ìˆ—‚ð‘‚­
+        Transition(() => Debug.Log("Normal‚É“]ˆÚ"));
     }
 
     public void OnHardClick()
     {
         seManager.PlayEnter2();
-        //‚±‚±‚Éhard‚Ìˆ—‚ð‘‚­
+        Transition(() => Debug.Log("Hard‚É“]ˆÚ"));
     }
 
     public void OnHardcoreClick()
     {
         Camera.main.GetComponent<AudioSource>().pitch = 0.8f;
         //seManager.PlayBell();
-        //‚±‚±‚Éhardcore‚Ìˆ—‚ð‘‚­
-        Transition(()=>Debug.Log("“]ˆÚ"));
+        Transition(()=>Debug.Log("Hardcore‚É“]ˆÚ"));
     }
 
     private void Transition(Action action)
