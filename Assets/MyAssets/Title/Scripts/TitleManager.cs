@@ -27,6 +27,10 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Button hardButton;
     [SerializeField] private UnityEngine.UI.Button hardcoreButton;
     [SerializeField] private UnityEngine.UI.Image transitionImage;
+    [SerializeField] private UnityEngine.UI.Image transitionImageR;
+    [SerializeField] private UnityEngine.UI.Image transitionImageG;
+    [SerializeField] private UnityEngine.UI.Image transitionImageB;
+
 
     private SEManager seManager;
 
@@ -160,8 +164,11 @@ public class TitleManager : MonoBehaviour
     {
         rayCastBlocker.SetActive(true);
         var sequence = DOTween.Sequence();
-        sequence.Append(transitionImage.DOFillAmount(1, 0.5f));
-        sequence.AppendInterval(3f);
+        sequence.Append(transitionImageR.DOFillAmount(1, 0.45f).SetEase(Ease.OutCubic));
+        sequence.Join(transitionImageG.DOFillAmount(1, 0.5f).SetEase(Ease.OutSine));
+        sequence.Join(transitionImageB.DOFillAmount(1, 0.55f).SetEase(Ease.InSine));
+        sequence.Join(transitionImage.DOFillAmount(1, 0.6f).SetEase(Ease.InCubic));
+        sequence.Join(Camera.main.GetComponent<AudioSource>().DOFade(0f, 3f));
         sequence.Play().OnComplete(() => action());
     }
 }
