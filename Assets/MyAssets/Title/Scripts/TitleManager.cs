@@ -32,14 +32,20 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Image transitionImageG;
     [SerializeField] private UnityEngine.UI.Image transitionImageB;
 
+    private static int transitionCount = 0;
+
 
     private SEManager seManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        SceneManager.activeSceneChanged += OnActiveSceneChanged;
-
+        if (transitionCount != 0)
+        {
+            TransitionBack();
+        }
+        transitionCount++;
+        
         seManager = Camera.main.GetComponent<SEManager>();
         rayCastBlocker.SetActive(false);
 
@@ -59,14 +65,6 @@ public class TitleManager : MonoBehaviour
         //hukidashi.transform.DOMoveY(6f, 3f).SetEase(Ease.Linear);
         //rectTransform.DOAnchorPosY(rectTransform.anchoredPosition.y + 6f,0.5f).SetEase(Ease.Linear);
         
-    }
-
-    void OnActiveSceneChanged(Scene thisScene, Scene nextScene)
-    {
-        if (nextScene.name == SceneManager.GetActiveScene().name)
-        {
-            TransitionBack();
-        }
     }
 
     private void OnEnable()
@@ -105,6 +103,7 @@ public class TitleManager : MonoBehaviour
     public void OnChallengeModeClick()
     {
         seManager.PlayEnter1();
+        SceneManager.LoadScene("Aizaki");
         //ここにチャレンジモードシーン転移処理を書く
     }
 
@@ -174,6 +173,13 @@ public class TitleManager : MonoBehaviour
     private void Transition(Action action)
     {
         rayCastBlocker.SetActive(true);
+
+        transitionImage.fillAmount = 0f;
+        transitionImageR.fillAmount = 0f;
+        transitionImageG.fillAmount = 0f;
+        transitionImageB.fillAmount = 0f;
+        Camera.main.GetComponent<AudioSource>().volume = 1f;
+
         var sequence = DOTween.Sequence();
         sequence.Append(transitionImageR.DOFillAmount(1, 0.45f).SetEase(Ease.OutCubic));
         sequence.Join(transitionImageG.DOFillAmount(1, 0.5f).SetEase(Ease.OutSine));
@@ -199,5 +205,7 @@ public class TitleManager : MonoBehaviour
         sequence.Join(transitionImageG.DOFillAmount(0, 0.55f).SetEase(Ease.InSine));
         sequence.Join(transitionImageR.DOFillAmount(0, 0.6f).SetEase(Ease.InCubic));
         sequence.Join(Camera.main.GetComponent<AudioSource>().DOFade(1f, 2f));
+
+        sequence.Play();
     }
 }
