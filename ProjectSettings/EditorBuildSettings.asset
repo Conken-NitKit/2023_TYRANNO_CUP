@@ -9,12 +9,24 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/MyAssets/Develop/Hayashi/Scenes/HayashiMane.unity
-    guid: fe45faf51f0f8436c84d158c319735a7
+    path: Assets/MyAssets/Title/Scenes/Title.unity
+    guid: 110c10ed636894f93a6f445647a90cd8
   - enabled: 1
-    path: Assets/MyAssets/Develop/Aizaki/Scenes/Aizaki.unity
-    guid: bed6805d7c21f48b58784b15711120f2
+    path: Assets/MyAssets/InGame/Scenes/Easy.unity
+    guid: 1d8ae137311c146fdadb1efab0189fb6
   - enabled: 1
-    path: Assets/MyAssets/Develop/Aizaki/Scenes/TakemuraCopy.unity
-    guid: 5853e0de78d1f4e4aaec9434bcd89da3
+    path: Assets/MyAssets/InGame/Scenes/Hard.unity
+    guid: 7e83ab18fb33e4724a4535e22a331c83
+  - enabled: 1
+    path: Assets/MyAssets/InGame/Scenes/HardCore.unity
+    guid: a7c95a9db624247dfacea2e395667236
+  - enabled: 1
+    path: Assets/MyAssets/InGame/Scenes/Normal.unity
+    guid: 02a3d471fae044648a87e9f1132f4da8
+  - enabled: 1
+    path: Assets/MyAssets/InGame/Scenes/TimeAttack.unity
+    guid: 76df8c0e7d59f48bea9c2525b87e05c3
+  - enabled: 1
+    path: Assets/MyAssets/Ranking/Scenes/Ranking.unity
+    guid: fb716544a6daf486e85f745faf110294
   m_configObjects: {}
