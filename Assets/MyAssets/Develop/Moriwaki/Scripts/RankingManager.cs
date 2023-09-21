@@ -15,7 +15,7 @@ namespace TyrannoCup.Ranking
         [SerializeField]
         private InputField inputFieldScore;
 
-        public void OnClick()
+        public void OnClickUpdateRanking()
         {
             UpdateRanking(inputFieldName.text, int.Parse(inputFieldScore.text));
         }
