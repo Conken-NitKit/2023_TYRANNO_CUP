@@ -27,7 +27,7 @@ public class SceneFadeManager : MonoBehaviour
     {
         //シーンによってfadeSpeedのスピードを変化
         var scene = SceneManager.GetActiveScene ();
-        if (scene.name == "Moriwaki") fadeSpeed = 2f;
+        if (scene.name == "Title") fadeSpeed = 2f;
 
         SetRGBA(0, 0, 0, 1);
         //シーン遷移が完了した際にフェードインを開始するように設定

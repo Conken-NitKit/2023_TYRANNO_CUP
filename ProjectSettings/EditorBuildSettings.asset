@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MyAssets/InGame/Scenes/TimeAttack.unity
     guid: 76df8c0e7d59f48bea9c2525b87e05c3
+  - enabled: 1
+    path: Assets/MyAssets/Ranking/Scenes/Ranking.unity
+    guid: fb716544a6daf486e85f745faf110294
   m_configObjects: {}

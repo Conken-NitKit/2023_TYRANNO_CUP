@@ -10,7 +10,7 @@ public class SceneChange : MonoBehaviour
     public void OnClickSceneChange()
     {
         var scene = SceneManager.GetActiveScene ();
-        if (scene.name == "Moriwaki") sceneFadeManager.fadeOutStart(0, 0, 0, 0, "RankingTest");
-        else sceneFadeManager.fadeOutStart(0, 0, 0, 0, "Moriwaki");
+        if (scene.name == "Title") sceneFadeManager.fadeOutStart(0, 0, 0, 0, "Ranking");
+        else sceneFadeManager.fadeOutStart(0, 0, 0, 0, "Title");
     }
 }
