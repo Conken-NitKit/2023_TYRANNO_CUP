@@ -497,7 +497,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: f296b659e53f24c9483c5d720ad6ebc5, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -508,10 +508,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Normal
-
-'
+    m_LineSpacing: 0
+  m_Text: "\u3075\u3064\u3046"
 --- !u!222 &208189749
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1400,7 +1398,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: f296b659e53f24c9483c5d720ad6ebc5, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -1411,8 +1409,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Easy
+    m_LineSpacing: 0
+  m_Text: "\u304B\u3093\u305F\u3093\n"
 --- !u!222 &655689325
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1554,7 +1552,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: f296b659e53f24c9483c5d720ad6ebc5, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -1565,8 +1563,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Hard
+    m_LineSpacing: 0
+  m_Text: "\u3080\u305A\u304B\u3057\u3044"
 --- !u!222 &740709415
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1911,8 +1909,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 26
+    m_Font: {fileID: 12800000, guid: f296b659e53f24c9483c5d720ad6ebc5, type: 3}
+    m_FontSize: 29
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1923,9 +1921,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Select
-
-    Difficulty'
+  m_Text: "\u96E3\u6613\u5EA6\u9078\u629E"
 --- !u!222 &892035283
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3543,7 +3539,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: f296b659e53f24c9483c5d720ad6ebc5, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -3554,8 +3550,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Hardcore
+    m_LineSpacing: 0
+  m_Text: "\u304A\u306B"
 --- !u!222 &1758091844
 CanvasRenderer:
   m_ObjectHideFlags: 0
