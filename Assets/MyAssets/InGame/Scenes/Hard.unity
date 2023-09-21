@@ -7248,6 +7248,7 @@ GameObject:
   - component: {fileID: 741208985}
   - component: {fileID: 741208986}
   - component: {fileID: 741208987}
+  - component: {fileID: 741208988}
   m_Layer: 5
   m_Name: Replay
   m_TagString: Untagged
@@ -7335,6 +7336,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2117875275}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: RingStampSE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 741208988}
+        m_TargetAssemblyTypeName: Tyranno.Common.SceneLoader, Assembly-CSharp
+        m_MethodName: OnClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7440,6 +7453,20 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _stamp: {fileID: 386109019}
+--- !u!114 &741208988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741208980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f8000bc2d1204dd9bcd26fd4a064358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waitSeconds: 2
+  _sceneName: 3
 --- !u!1 &748238666
 GameObject:
   m_ObjectHideFlags: 0
@@ -13173,6 +13200,7 @@ GameObject:
   - component: {fileID: 1403209877}
   - component: {fileID: 1403209878}
   - component: {fileID: 1403209879}
+  - component: {fileID: 1403209880}
   m_Layer: 5
   m_Name: ToTitleButton
   m_TagString: Untagged
@@ -13260,6 +13288,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2117875275}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: RingStampSE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1403209880}
+        m_TargetAssemblyTypeName: Tyranno.Common.SceneLoader, Assembly-CSharp
+        m_MethodName: OnClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13365,6 +13405,20 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _stamp: {fileID: 2043187868}
+--- !u!114 &1403209880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403209872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f8000bc2d1204dd9bcd26fd4a064358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waitSeconds: 2
+  _sceneName: 0
 --- !u!1 &1438971009
 GameObject:
   m_ObjectHideFlags: 0
@@ -18749,7 +18803,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _gameSetting: {fileID: 11400000, guid: f6ee444793e2f45db8e82238863ffa1c, type: 2}
+  _gameSetting: {fileID: 11400000, guid: 7ea80c2cb46c44bc9a68dedb166c93d7, type: 2}
 --- !u!114 &2117875262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18780,7 +18834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _puzzleState: {fileID: 2117875256}
-  _gameSetting: {fileID: 11400000, guid: f6ee444793e2f45db8e82238863ffa1c, type: 2}
+  _gameSetting: {fileID: 11400000, guid: 7ea80c2cb46c44bc9a68dedb166c93d7, type: 2}
 --- !u!114 &2117875266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18794,7 +18848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _puzzleManager: {fileID: 2117875265}
-  _gameSetting: {fileID: 11400000, guid: f6ee444793e2f45db8e82238863ffa1c, type: 2}
+  _gameSetting: {fileID: 11400000, guid: 7ea80c2cb46c44bc9a68dedb166c93d7, type: 2}
   _conditionsDescription: {fileID: 11400000, guid: adfd2b71fa96b4cc59f535e86cd463e2, type: 2}
   _descriptionText: {fileID: 85564241}
 --- !u!114 &2117875267
@@ -18894,7 +18948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f08a2e1dcbca41be9ff5b2b4a852cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameSetting: {fileID: 11400000, guid: f6ee444793e2f45db8e82238863ffa1c, type: 2}
+  _gameSetting: {fileID: 11400000, guid: 7ea80c2cb46c44bc9a68dedb166c93d7, type: 2}
   _timeManager: {fileID: 2117875262}
   _inputTimeAttack: {fileID: 952976283}
   _teacherComment: {fileID: 1762194126}
@@ -18914,7 +18968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeManager: {fileID: 2117875262}
   _countSeconds: {fileID: 541706882}
-  _gameSetting: {fileID: 11400000, guid: f6ee444793e2f45db8e82238863ffa1c, type: 2}
+  _gameSetting: {fileID: 11400000, guid: 7ea80c2cb46c44bc9a68dedb166c93d7, type: 2}
   _puzzleManager: {fileID: 2117875265}
   _text: {fileID: 50062736}
 --- !u!82 &2117875274

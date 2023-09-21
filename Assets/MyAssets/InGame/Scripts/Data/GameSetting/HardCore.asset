@@ -9,15 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d0199c11aa6f514784c5c69cd8378d8, type: 3}
-  m_Name: PlayFabEditorPrefsSO
+  m_Script: {fileID: 11500000, guid: 34902b6b2d8ca40cc8c0f29d45179101, type: 3}
+  m_Name: HardCore
   m_EditorClassIdentifier: 
-  DevAccountEmail: 
-  DevAccountToken: 
-  SelectedStudio: 
-  SdkPath: 
-  EdExPath: 
-  LocalCloudScriptPath: 
-  PanelIsShown: 0
-  curMainMenuIdx: 0
-  curSubMenuIdx: 0
+  WaveNum: 10
+  StartConditionsNum: 1
+  MaxConditionsNum: 10
+  IsTimeAttack: 0
+  Score: 200
+  Comment: "\u304A\u3064\u304B\u308C"
