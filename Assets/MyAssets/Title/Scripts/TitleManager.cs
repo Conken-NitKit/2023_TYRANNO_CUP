@@ -6,6 +6,7 @@ using DG.Tweening;
 using UnityEngine.UIElements;
 using Unity.VisualScripting;
 using System;
+using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
@@ -37,6 +38,8 @@ public class TitleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SceneManager.activeSceneChanged += OnActiveSceneChanged;
+
         seManager = Camera.main.GetComponent<SEManager>();
         rayCastBlocker.SetActive(false);
 
@@ -56,6 +59,14 @@ public class TitleManager : MonoBehaviour
         //hukidashi.transform.DOMoveY(6f, 3f).SetEase(Ease.Linear);
         //rectTransform.DOAnchorPosY(rectTransform.anchoredPosition.y + 6f,0.5f).SetEase(Ease.Linear);
         
+    }
+
+    void OnActiveSceneChanged(Scene thisScene, Scene nextScene)
+    {
+        if (nextScene.name == SceneManager.GetActiveScene().name)
+        {
+            TransitionBack();
+        }
     }
 
     private void OnEnable()
@@ -170,5 +181,23 @@ public class TitleManager : MonoBehaviour
         sequence.Join(transitionImage.DOFillAmount(1, 0.6f).SetEase(Ease.InCubic));
         sequence.Join(Camera.main.GetComponent<AudioSource>().DOFade(0f, 3f));
         sequence.Play().OnComplete(() => action());
+    }
+
+    private void TransitionBack()
+    {
+        rayCastBlocker.SetActive(false);
+        
+        transitionImage.fillAmount = 1f;
+        transitionImageR.fillAmount = 1f;
+        transitionImageG.fillAmount = 1f;
+        transitionImageB.fillAmount = 1f;
+        Camera.main.GetComponent<AudioSource>().volume = 0f;
+
+        var sequence = DOTween.Sequence();
+        sequence.Append(transitionImage.DOFillAmount(0, 0.45f).SetEase(Ease.OutCubic));
+        sequence.Join(transitionImageB.DOFillAmount(0, 0.5f).SetEase(Ease.OutSine));
+        sequence.Join(transitionImageG.DOFillAmount(0, 0.55f).SetEase(Ease.InSine));
+        sequence.Join(transitionImageR.DOFillAmount(0, 0.6f).SetEase(Ease.InCubic));
+        sequence.Join(Camera.main.GetComponent<AudioSource>().DOFade(1f, 2f));
     }
 }
