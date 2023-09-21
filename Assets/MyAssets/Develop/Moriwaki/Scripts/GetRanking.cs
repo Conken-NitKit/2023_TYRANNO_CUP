@@ -70,7 +70,7 @@ namespace TyrannoCup.Ranking
         {
             int TimeOfMinute = (int)Mathf.Floor(time / 60f);
             int TimeOfSecond = (int)Mathf.Floor(time % 60f);
-            return TimeOfMinute.ToString().PadLeft(2, '0') + "." + TimeOfSecond.ToString().PadLeft(2, '0');
+            return TimeOfMinute.ToString().PadLeft(2, '0') + "'" + TimeOfSecond.ToString().PadLeft(2, '0');
         }
     }
 }

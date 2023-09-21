@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 using static UnityEngine.UI.Image;
 
 namespace Tyranno.Puzzle.Algorithms
@@ -9,6 +9,24 @@ namespace Tyranno.Puzzle.Algorithms
 
     public static class ConditionProfiles
     {
+        public static readonly List<Func<bool[,], bool>> AllProfiles = new()
+        {
+            IsLeftToRightMaze,
+            IsUpperToBottomMaze,
+            IsSingleColoredWall,
+            IsSymmetry,
+            IsPointSymmetry,
+            IsVerticalSymmetry,
+            IsQuantityLimit,
+            IsFalseConnectionSizeVaild,
+            IsTrueCountInRowOrColumnValid,
+            IsTrueConnectionSizeVaild,
+            IsSurroundedByFalse,
+            IsHorizontallyOrVerticallyConnected,
+            IsNot4FoldSymmetry,
+            IsFalseDivisionsCountLimit
+        };
+
         /// <summary>
         /// 左辺から右辺までtrueのマスが連なっていることを判定します。
         /// 斜めも連なっていると判定します。
@@ -158,14 +176,14 @@ namespace Tyranno.Puzzle.Algorithms
         };
 
         /// <summary>
-        /// 四辺にそれぞれひとつだけtrueのマスがあることを判定します。
+        /// 四辺にちょうど1つtrueのマスがあることを判定します。
         /// </summary>
         public static readonly Func<bool[,], bool> IsSingleColoredWall = originalStates =>
         {
             bool[,] states = ConvertAxis(originalStates);
 
 
-            var counter = 0;
+            int counter = 0;
 
             //上辺
             for (int i = 0; i < states.GetLength(0); i++)
@@ -222,6 +240,59 @@ namespace Tyranno.Puzzle.Algorithms
                 }
             }
             if (counter == 0) return false;
+
+            return true;
+        };
+
+        /// <summary>
+        /// 四辺にちょうど2つtrueのマスがあることを判定します。
+        /// </summary>
+        private static readonly Func<bool[,], bool> IsDoubleColoredWall = originalStates =>
+        {
+            bool[,] states = ConvertAxis(originalStates);
+
+
+            int counter = 0;
+
+            //上辺
+            for (int i = 0; i < states.GetLength(0); i++)
+            {
+                if (states[i, 0])
+                {
+                    counter++;
+                }
+            }
+            if (counter != 2) return false;
+            counter = 0;
+            //下辺
+            for (int i = 0; i < states.GetLength(0); i++)
+            {
+                if (states[i, states.GetLength(1) - 1])
+                {
+                    counter++;
+                }
+            }
+            if (counter != 2) return false;
+            counter = 0;
+            //左辺
+            for (int i = 0; i < states.GetLength(1); i++)
+            {
+                if (states[0, i])
+                {
+                    counter++;
+                }
+            }
+            if (counter != 2) return false;
+            counter = 0;
+            //右辺
+            for (int i = 0; i < states.GetLength(1); i++)
+            {
+                if (states[states.GetLength(0) - 1, i])
+                {
+                    counter++;
+                }
+            }
+            if (counter != 2) return false;
 
             return true;
         };
@@ -298,7 +369,7 @@ namespace Tyranno.Puzzle.Algorithms
         /// </summary>
         public static readonly Func<bool[,], bool> IsQuantityLimit = originalStates =>
         {
-            var limit = 24;
+            int limit = 24;
             return ConvertToLinear(originalStates).FindAll(x => x).Count >= limit;
         };
 
@@ -316,7 +387,7 @@ namespace Tyranno.Puzzle.Algorithms
             {
                 for (int j = 0; j < states.GetLength(0); j++)
                 {
-                    foreach (var (x, y) in foundStates)
+                    foreach ((int x, int y) in foundStates)
                     {
                         states[x, y] = false;
                     }
@@ -413,13 +484,13 @@ namespace Tyranno.Puzzle.Algorithms
             }
 
             HashSet<(int x, int y)> foundStates = new();
-            
+
 
             for (int i = 0; i < states.GetLength(1); i++)
             {
                 for (int j = 0; j < states.GetLength(0); j++)
                 {
-                    foreach (var (x, y) in foundStates)
+                    foreach ((int x, int y) in foundStates)
                     {
                         states[x, y] = false;
                     }
@@ -499,7 +570,7 @@ namespace Tyranno.Puzzle.Algorithms
         };
 
         /// <summary>
-        /// 1行または1列に5個以上のTrueのマスが存在する場合false、そうでなければtrueを返します。
+        /// 1行または1列に5個以上のtrueのマスが存在する場合false、そうでなければtrueを返します。
         /// </summary>
         public static readonly Func<bool[,], bool> IsTrueCountInRowOrColumnValid = originalStates =>
         {
@@ -544,7 +615,164 @@ namespace Tyranno.Puzzle.Algorithms
             return true;
         };
 
+        /// <summary>
+        /// 周囲の8マスがすべてfalseであるtrueのマスが1つ以上存在する場合true、そうでなければfalseを返します。
+        /// </summary>
+        public static readonly Func<bool[,], bool> IsSurroundedByFalse = originalStates =>
+        {
+            bool[,] states = ConvertAxis(originalStates);
 
+            for (int i = 0; i < states.GetLength(1); i++)
+            {
+                for (int j = 0; j < states.GetLength(0); j++)
+                {
+                    if (states[j, i] && AroundCount(states, j, i) == 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        };
+
+        /// <summary>
+        /// 縦または横に2つ以上繋がっているtrueマスが存在する場合true、そうでなければfalseを返します。
+        /// </summary>
+        public static readonly Func<bool[,], bool> IsHorizontallyOrVerticallyConnected = originalStates =>
+        {
+            bool[,] states = ConvertAxis(originalStates);
+
+            for (int i = 0; i < states.GetLength(1); i++)
+            {
+                for (int j = 0; j < states.GetLength(0); j++)
+                {
+                    if (states[j, i] && AroundCount4(states, j, i) >= 1)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        };
+
+        /// <summary>
+        /// 配置が4回対称(90度回転させたときに重なる)であればfalse、そうでなければfalseを返します。
+        /// </summary>
+        public static readonly Func<bool[,], bool> IsNot4FoldSymmetry = originalStates =>
+        {
+            bool[,] states = ConvertAxis(originalStates);
+            bool[,] converted = new bool[states.GetLength(1), states.GetLength(0)];
+            for (int i = 0; i < converted.GetLength(0); i++)
+            {
+                for (int j = 0; j < converted.GetLength(1); j++)
+                {
+                    converted[converted.GetLength(0) - i - 1, j] = states[j, i];
+                    if (converted[converted.GetLength(0) - i - 1, j] != states[converted.GetLength(0) - i - 1, j])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        };
+
+        /// <summary>
+        /// falseマスが9個以上に分割されているとfalse、そうでなければtrueを返します。
+        /// </summary>
+        public static readonly Func<bool[,], bool> IsFalseDivisionsCountLimit = originalStates =>
+        {
+            int limit = 9;
+            int count = 0;
+
+            bool[,] states = ConvertAxis(originalStates);
+            for (int i = 0; i < states.GetLength(1); i++)
+            {
+                for (int j = 0; j < states.GetLength(0); j++)
+                {
+                    states[j, i] = !states[j, i];
+                }
+            }
+
+            HashSet<(int x, int y)> foundStates = new();
+
+
+            for (int i = 0; i < states.GetLength(1); i++)
+            {
+                for (int j = 0; j < states.GetLength(0); j++)
+                {
+                    foreach ((int x, int y) in foundStates)
+                    {
+                        states[x, y] = false;
+                    }
+
+                    foundStates = new();
+
+                    if (!states[j, i])
+                    {
+                        continue;
+                    }
+
+                    count++;
+                    if (count >= limit)
+                    {
+                        return false;
+                    }
+
+                    Stack<((int x, int y) location, int count, bool[,] statesLog)> branchStacks = new();
+                    (int x, int y) currentLocation = (j, i);
+                    (int x, int y) lastBranchLocation = (0, 0);
+                    foundStates.Add(currentLocation);
+
+                    for (int k = 0; k <= states.Length + 1; j++)
+                    {
+
+                        int aroundCount = AroundCount4(states, currentLocation.x, currentLocation.y);
+                        if (aroundCount == 0)
+                        {
+                            if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) branchOut))
+                            {
+                                currentLocation = branchOut.location;
+                                states = branchOut.statesLog;
+                                states[lastBranchLocation.x, lastBranchLocation.y] = false;
+                                branchStacks.Pop();
+                                continue;
+                            }
+                            else
+                            {
+                                break;
+                            }
+
+                        }
+                        else if (aroundCount == 1)
+                        {
+                            states[currentLocation.x, currentLocation.y] = false;
+                            currentLocation = GetBranchByCount4(states, currentLocation.x, currentLocation.y, 0);
+                            foundStates.Add(currentLocation);
+                        }
+                        else if (aroundCount >= 2)
+                        {
+                            states[currentLocation.x, currentLocation.y] = false;
+                            if (branchStacks.TryPeek(out ((int x, int y) location, int count, bool[,] statesLog) branchOut))
+                            {
+                                int countTmp = branchOut.location == currentLocation ? branchOut.count + 1 : 0;
+                                branchStacks.Push((currentLocation, countTmp, states));
+                                (int x, int y) branchloc = GetBranchByCount4(states, currentLocation.x, currentLocation.y, countTmp);
+                                currentLocation = branchloc;
+                                lastBranchLocation = branchloc;
+
+                                foundStates.Add(currentLocation);
+                            }
+                            else
+                            {
+                                branchStacks.Push((currentLocation, 0, states));
+                            }
+
+                        }
+                    }
+                }
+            }
+            return true;
+        };
 
 
 
@@ -556,7 +784,7 @@ namespace Tyranno.Puzzle.Algorithms
         private static List<bool> ConvertToLinear(bool[,] original)
         {
             List<bool> converted = new();
-            foreach (var state in original)
+            foreach (bool state in original)
             {
                 converted.Add(state);
             }
@@ -637,7 +865,7 @@ namespace Tyranno.Puzzle.Algorithms
         private static List<(bool, (int x, int y))> Around4(bool[,] states, int x, int y)
         {
             List<(bool, (int x, int y))> values = new();
-            
+
             if (x - 1 >= 0)
             {
                 values.Add((states[x - 1, y], (x - 1, y)));
@@ -712,7 +940,7 @@ namespace Tyranno.Puzzle.Algorithms
         private static int AroundCount4(bool[,] states, int x, int y)
         {
             int count = 0;
-            
+
             if (x - 1 >= 0 && states[x - 1, y])
             {
                 count++;
