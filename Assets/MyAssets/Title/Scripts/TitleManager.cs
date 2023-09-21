@@ -103,6 +103,7 @@ public class TitleManager : MonoBehaviour
     public void OnChallengeModeClick()
     {
         seManager.PlayEnter1();
+        SceneManager.LoadScene("Aizaki");
         //ここにチャレンジモードシーン転移処理を書く
     }
 
