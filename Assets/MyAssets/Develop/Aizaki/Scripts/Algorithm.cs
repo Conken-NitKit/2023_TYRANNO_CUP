@@ -9,23 +9,32 @@ namespace Tyranno.Puzzle.Algorithms
 
     public static class ConditionProfiles
     {
-        public static readonly List<Func<bool[,], bool>> AllProfiles = new()
+        /// <summary>
+        /// 全ての関数のListを返します。
+        /// </summary>
+        public static List<Func<bool[,], bool>> AllProfiles
         {
-            IsLeftToRightMaze,
-            IsUpperToBottomMaze,
-            IsSingleColoredWall,
-            IsSymmetry,
-            IsPointSymmetry,
-            IsVerticalSymmetry,
-            IsQuantityLimit,
-            IsFalseConnectionSizeVaild,
-            IsTrueCountInRowOrColumnValid,
-            IsTrueConnectionSizeVaild,
-            IsSurroundedByFalse,
-            IsHorizontallyOrVerticallyConnected,
-            IsNot4FoldSymmetry,
-            IsFalseDivisionsCountLimit
-        };
+            get
+            {
+                return new()
+                {
+                    IsLeftToRightMaze,
+                    IsUpperToBottomMaze,
+                    IsSingleColoredWall,
+                    IsSymmetry,
+                    IsPointSymmetry,
+                    IsVerticalSymmetry,
+                    IsQuantityLimit,
+                    IsFalseConnectionSizeVaild,
+                    IsTrueCountInRowOrColumnValid,
+                    IsTrueConnectionSizeVaild,
+                    IsSurroundedByFalse,
+                    IsHorizontallyOrVerticallyConnected,
+                    IsNot4FoldSymmetry,
+                    IsFalseDivisionsCountLimit
+                };
+            }
+        }
 
         /// <summary>
         /// 左辺から右辺までtrueのマスが連なっていることを判定します。
@@ -776,6 +785,8 @@ namespace Tyranno.Puzzle.Algorithms
 
 
 
+
+
         /// <summary>
         /// 二次元配列を一次元配列に変換します。
         /// </summary>
@@ -994,7 +1005,5 @@ namespace Tyranno.Puzzle.Algorithms
             return around[index].Item2;
         }
 
-        //テスト用
-        //Debug.Log($"{Tyranno.Puzzle.Algorithms.ConditionProfiles.LeftToRightMaze(_puzzleState.SquareArray)},{Tyranno.Puzzle.Algorithms.ConditionProfiles.UpperToBottomMaze(_puzzleState.SquareArray)},{Tyranno.Puzzle.Algorithms.ConditionProfiles.SingleColoredWall(_puzzleState.SquareArray)},{Tyranno.Puzzle.Algorithms.ConditionProfiles.Symmetry(_puzzleState.SquareArray)},{Tyranno.Puzzle.Algorithms.ConditionProfiles.PointSymmetry(_puzzleState.SquareArray)}");
     }
 }
