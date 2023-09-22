@@ -9,7 +9,7 @@ namespace Tyranno.Puzzle.Algorithms
 
     public static class ConditionProfiles
     {
-        public static readonly List<Func<bool[,], bool>> AllProfiles = new()
+        private static readonly List<Func<bool[,], bool>> allProfiles = new()
         {
             IsLeftToRightMaze,
             IsUpperToBottomMaze,
@@ -26,6 +26,33 @@ namespace Tyranno.Puzzle.Algorithms
             IsNot4FoldSymmetry,
             IsFalseDivisionsCountLimit
         };
+
+        /// <summary>
+        /// 全ての関数のListを返します。
+        /// </summary>
+        public static List<Func<bool[,], bool>> AllProfiles
+        {
+            get
+            {
+                return new()
+                {
+                    IsLeftToRightMaze,
+                    IsUpperToBottomMaze,
+                    IsSingleColoredWall,
+                    IsSymmetry,
+                    IsPointSymmetry,
+                    IsVerticalSymmetry,
+                    IsQuantityLimit,
+                    IsFalseConnectionSizeVaild,
+                    IsTrueCountInRowOrColumnValid,
+                    IsTrueConnectionSizeVaild,
+                    IsSurroundedByFalse,
+                    IsHorizontallyOrVerticallyConnected,
+                    IsNot4FoldSymmetry,
+                    IsFalseDivisionsCountLimit
+                };
+            }
+        }
 
         /// <summary>
         /// 左辺から右辺までtrueのマスが連なっていることを判定します。
@@ -773,6 +800,8 @@ namespace Tyranno.Puzzle.Algorithms
             }
             return true;
         };
+
+
 
 
 
