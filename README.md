@@ -7,13 +7,17 @@
 #### 概要
 条件追加パズルゲーム
 
-9*9のマス目に色を塗っていき、提示された全ての条件に合うような図形を作るゲームです。
+9*9のマス目に色を塗っていき、提示された全ての条件に合うような図形を作るゲームです。  
 条件が追加されるたび、前の形を壊して、「形破り」をすることでクリアを目指していきます。
 
-時間をかけてじっくりプレイできる「ノーマルモード」
-自分のタイムの限界に挑戦する「チャレンジモード」
-そのタイムのランキングが見れる「ランキングモード」
+時間をかけてじっくりプレイできる「ノーマルモード」  
+自分のタイムの限界に挑戦する「チャレンジモード」  
+そのタイムのランキングが見れる「ランキングモード」  
 があります。
+
+### UnityRoom
+UnityRoomで公開しています。  
+[カタヤブーリ先生の 劇的！脳トレパズル！](https://unityroom.com/games/katayaburi_puzzle)
 
 ### 企画書
 [Canva](https://www.canva.com/design/DAFtwcMEvgI/3CWpW3gSZg9XXhO1lNLZjA/edit?utm_content=DAFtwcMEvgI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
