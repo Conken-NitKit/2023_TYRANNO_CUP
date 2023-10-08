@@ -15,6 +15,8 @@
 そのタイムのランキングが見れる「ランキングモード」  
 があります。
 
+**ハックツハッカソン 〜ティラノカップ〜　最優秀賞**
+
 ### UnityRoom
 UnityRoomで公開しています。  
 [カタヤブーリ先生の 劇的！脳トレパズル！](https://unityroom.com/games/katayaburi_puzzle)
