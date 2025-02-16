@@ -15,6 +15,9 @@
 そのタイムのランキングが見れる「ランキングモード」  
 があります。
 
+#### 動作動画
+https://youtu.be/lan4nbpEwKE?si=tuvpVGlIzlCOHhhu
+
 **ハックツハッカソン 〜ティラノカップ〜　最優秀賞**
 
 ### UnityRoom
